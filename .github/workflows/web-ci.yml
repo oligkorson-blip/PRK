@@ -10,6 +10,8 @@ on:
     paths:
       - "apps/web/**"
       - ".github/workflows/web-ci.yml"
+  # Allow manual runs for debugging or verifying main after a revert/fix.
+  workflow_dispatch:
 
 # Cancel stale runs on the same PR/branch so a force-push or rapid commit does
 # not queue duplicate jobs.
