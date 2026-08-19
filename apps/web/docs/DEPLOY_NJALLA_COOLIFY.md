@@ -77,7 +77,7 @@ From a checkout of the repo on the VPS:
 ```bash
 cd /path/to/parkwise-platform/apps/web
 cp .env.example .env
-# edit .env — set BETTER_AUTH_SECRET, SUPER_ADMIN_EMAILS, and public URLs (https://your-domain.example)
+# edit .env — set BETTER_AUTH_SECRET, SUPER_ADMIN_EMAILS, POSTGRES_PASSWORD, and public URLs (https://your-domain.example)
 docker compose up -d --build
 ```
 
@@ -88,6 +88,7 @@ export BETTER_AUTH_SECRET="$(openssl rand -base64 32)"
 export SUPER_ADMIN_EMAILS="ops@your-domain.example"
 export BETTER_AUTH_URL="https://your-domain.example"
 export NEXT_PUBLIC_APP_URL="https://your-domain.example"
+export POSTGRES_PASSWORD="$(openssl rand -hex 24)"   # required — no default in the production compose file
 docker compose up -d --build
 ```
 
@@ -99,7 +100,8 @@ Set these in Coolify (or `.env` next to compose). Production values:
 
 | Variable | Example / notes |
 |----------|-----------------|
-| `DATABASE_URL` | Compose sets `postgresql://parkwise:parkwise@postgres:5432/parkwise` for the `web` service — keep that on Docker network |
+| `POSTGRES_PASSWORD` | **Required, no default.** Random string (`openssl rand -hex 24`); shared by the `postgres` service and the `web` `DATABASE_URL` |
+| `DATABASE_URL` | Compose builds it from `POSTGRES_USER`/`POSTGRES_PASSWORD`/`POSTGRES_DB` for the `web` service (`postgresql://…@postgres:5432/…`) — keep that on the Docker network |
 | `DOCUMENTS_DIR` | `/data/documents` (compose mounts the volume here) |
 | `DEMO_MODE` | `true` until legal sign-off |
 | `SUPER_ADMIN_EMAILS` | Comma-separated super-admin emails, e.g. `ops@your-domain.example` |
@@ -113,6 +115,10 @@ Generate a secret:
 ```bash
 openssl rand -base64 32
 ```
+
+### Single-instance assumption (rate limits)
+
+Auth and abuse rate limits — the Better Auth `customRules` (sign-in, password reset, 2FA endpoints) and the in-app apply/interest throttles — are **in-memory per web instance**. The compose stack runs exactly **one** `web` replica, which is what those limits assume. Keep it at one replica (the Coolify compose default); if you ever scale `web` horizontally, move rate limiting to a shared store first or the effective limits multiply per replica.
 
 ---
 
@@ -245,4 +251,5 @@ Do this periodically — a backup you have never restored is a hope, not a backu
 | `/admin` forbidden | Email must match `SUPER_ADMIN_EMAILS` or be a promoted agent; redeploy after env edits |
 | Empty catalogue | Run migrate + seed inside the `web` container |
 | Document upload disabled | Ensure `DOCUMENTS_DIR=/data/documents` and the volume is mounted |
+| Compose fails with "POSTGRES_PASSWORD must be set" | Set `POSTGRES_PASSWORD` in Coolify / `.env` — it has no default |
 | Coolify UI unreachable | Check VPS firewall allows port `8000` (and `80`/`443` for the app) |
