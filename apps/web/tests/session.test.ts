@@ -29,9 +29,24 @@ beforeEach(() => {
 
 describe("requireSessionUserOrRedirect", () => {
   it("returns the session user when one is signed in", async () => {
+    getSessionMock.mockResolvedValue({ user: { id: "u1", email: "a@b.c", emailVerified: true } });
+
+    await expect(requireSessionUserOrRedirect()).resolves.toEqual({
+      id: "u1",
+      email: "a@b.c",
+      emailVerified: true
+    });
+    expect(redirectMock).not.toHaveBeenCalled();
+  });
+
+  it("normalizes a missing emailVerified flag to false", async () => {
     getSessionMock.mockResolvedValue({ user: { id: "u1", email: "a@b.c" } });
 
-    await expect(requireSessionUserOrRedirect()).resolves.toEqual({ id: "u1", email: "a@b.c" });
+    await expect(requireSessionUserOrRedirect()).resolves.toEqual({
+      id: "u1",
+      email: "a@b.c",
+      emailVerified: false
+    });
     expect(redirectMock).not.toHaveBeenCalled();
   });
 

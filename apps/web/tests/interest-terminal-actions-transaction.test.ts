@@ -64,6 +64,7 @@ import { ensureInvestor, requireAdmin } from "@/lib/auth/investor";
 import { canExpressInterest } from "@/lib/auth/gates";
 import { investorVisibleToStaff } from "@/lib/auth/staff";
 import { sendTransactionalEmail } from "@/lib/email/send";
+import { validateInterestNote } from "@/lib/interests/validation";
 import { declineInterest } from "@/lib/interests/admin-actions";
 import { withdrawInterest } from "@/lib/interests/actions";
 
@@ -142,6 +143,43 @@ describe("transactional interest terminal actions", () => {
       })
     );
     expect(sendTransactionalEmail).toHaveBeenCalledTimes(1);
+  });
+
+  it("keeps the internal admin note out of the decline email; sends only the investor message", async () => {
+    // Pass notes through so the two fields can be told apart.
+    vi.mocked(validateInterestNote).mockImplementation((note) => {
+      const trimmed = (note ?? "").trim();
+      return { ok: true as const, note: trimmed.length ? trimmed : null };
+    });
+    mockSelectRows([
+      {
+        interest,
+        asset: { id: "asset-1", slug: "dublin-central", name: "Dublin Central" },
+        investor
+      }
+    ]);
+
+    const result = await declineInterest({
+      interestId: interest.id,
+      adminNote: "internal: ticket below strategy floor",
+      investorMessage: "we cannot place this amount right now"
+    });
+
+    expect(result).toEqual({ ok: true });
+    // Both fields land in the audit payload…
+    expect(mocks.auditValues).toHaveBeenCalledWith(
+      expect.objectContaining({
+        action: "interest.declined",
+        payload: expect.objectContaining({
+          adminNote: "internal: ticket below strategy floor",
+          investorMessage: "we cannot place this amount right now"
+        })
+      })
+    );
+    // …but the investor email quotes only the investor-facing message.
+    const emailCall = vi.mocked(sendTransactionalEmail).mock.calls[0]?.[0] as { text: string };
+    expect(emailCall.text).toContain("Message from the team: we cannot place this amount right now");
+    expect(emailCall.text).not.toContain("internal: ticket below strategy floor");
   });
 
   it("does not audit or email when another request already claimed the decline", async () => {

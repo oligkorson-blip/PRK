@@ -8,7 +8,7 @@ describe("isPrivateIp", () => {
     expect(isPrivateIp("192.168.1.1")).toBe(true);
     expect(isPrivateIp("172.16.0.1")).toBe(true);
     expect(isPrivateIp("172.31.255.1")).toBe(true);
-    expect(isPrivateIp("203.0.113.10")).toBe(false);
+    expect(isPrivateIp("1.1.1.1")).toBe(false);
     expect(isPrivateIp("172.32.0.1")).toBe(false);
   });
 
@@ -31,21 +31,34 @@ describe("isPrivateIp", () => {
     expect(isPrivateIp("198.20.0.1")).toBe(false);
     expect(isPrivateIp("240.0.0.1")).toBe(true);
     expect(isPrivateIp("255.255.255.255")).toBe(true);
-    expect(isPrivateIp("239.255.255.255")).toBe(false);
+  });
+
+  it("detects documentation and protocol-assignment ranges (RFC 5737 / 6890)", () => {
+    expect(isPrivateIp("192.0.2.1")).toBe(true);
+    expect(isPrivateIp("198.51.100.7")).toBe(true);
+    expect(isPrivateIp("203.0.113.10")).toBe(true);
+    expect(isPrivateIp("192.0.0.1")).toBe(true);
+    expect(isPrivateIp("192.0.3.1")).toBe(false);
+  });
+
+  it("detects multicast 224.0.0.0/4", () => {
+    expect(isPrivateIp("224.0.0.1")).toBe(true);
+    expect(isPrivateIp("239.255.255.255")).toBe(true);
+    expect(isPrivateIp("223.255.255.255")).toBe(false);
   });
 
   it("classifies IPv4-mapped IPv6 by the embedded address", () => {
     expect(isPrivateIp("::ffff:127.0.0.1")).toBe(true);
     expect(isPrivateIp("::FFFF:10.0.0.5")).toBe(true);
     expect(isPrivateIp("::ffff:169.254.1.1")).toBe(true);
-    expect(isPrivateIp("::ffff:203.0.113.10")).toBe(false);
+    expect(isPrivateIp("::ffff:8.8.8.8")).toBe(false);
   });
 
   it("classifies hex-form IPv4-mapped IPv6 by the embedded address", () => {
     expect(isPrivateIp("::ffff:7f00:1")).toBe(true);
     expect(isPrivateIp("0:0:0:0:0:ffff:7f00:1")).toBe(true);
     expect(isPrivateIp("::ffff:a00:5")).toBe(true); // 10.0.0.5
-    expect(isPrivateIp("::ffff:cb00:710a")).toBe(false); // 203.0.113.10
+    expect(isPrivateIp("::ffff:808:808")).toBe(false); // 8.8.8.8
   });
 
   it("detects IPv6 loopback and private prefixes case-insensitively", () => {
@@ -57,6 +70,15 @@ describe("isPrivateIp", () => {
     expect(isPrivateIp("fe80::1")).toBe(true);
     expect(isPrivateIp("FE80::1")).toBe(true);
     expect(isPrivateIp("2001:4860:4860::8888")).toBe(false);
+  });
+
+  it("detects IPv6 multicast ff00::/8 and documentation 2001:db8::/32", () => {
+    expect(isPrivateIp("ff00::1")).toBe(true);
+    expect(isPrivateIp("ff02::1")).toBe(true);
+    expect(isPrivateIp("FF02::1")).toBe(true);
+    expect(isPrivateIp("2001:db8::1")).toBe(true);
+    expect(isPrivateIp("2001:db8:ffff::1")).toBe(true);
+    expect(isPrivateIp("2001:db9::1")).toBe(false);
   });
 
   it("detects non-canonical and expanded IPv6 forms", () => {
@@ -77,7 +99,7 @@ describe("isPrivateIp", () => {
 
   it("leaves public IPv4 addresses public", () => {
     expect(isPrivateIp("8.8.8.8")).toBe(false);
-    expect(isPrivateIp("203.0.113.10")).toBe(false);
+    expect(isPrivateIp("9.9.9.9")).toBe(false);
   });
 
   it("fails closed on non-canonical IPv4 forms — never enrichable", () => {
