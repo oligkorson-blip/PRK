@@ -104,6 +104,12 @@ async function assertAuthUserVisibleToStaff(
   }
 }
 
+// Safety bound: the staff sign-in history view materializes the rows it
+// returns, so cap it at the most recent events instead of reading an
+// account's entire history into memory. 500 is far beyond any UI need;
+// revisit with cursor pagination if that ever changes.
+const MAX_ACCESS_EVENTS_PER_USER = 500;
+
 export async function listAccessEventsForAuthUser(
   authUserId: string
 ): Promise<AccessEventRow[]> {
@@ -134,7 +140,8 @@ export async function listAccessEventsForAuthUser(
     })
     .from(userAccessEvents)
     .where(eq(userAccessEvents.authUserId, authUserId))
-    .orderBy(desc(userAccessEvents.occurredAt));
+    .orderBy(desc(userAccessEvents.occurredAt))
+    .limit(MAX_ACCESS_EVENTS_PER_USER);
 }
 
 export async function getInvestorDetailForStaff(
