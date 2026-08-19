@@ -1,5 +1,23 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { isDemoMode, isExplicitDemoMode } from "@/lib/demo-mode";
+
+// These helpers read process.env.DEMO_MODE by default; CI sets it explicitly,
+// so the tests must control it to assert the "not set" fail-closed paths.
+const DEMO_MODE_KEY = "DEMO_MODE";
+let savedDemoMode: string | undefined;
+
+beforeEach(() => {
+  savedDemoMode = process.env[DEMO_MODE_KEY];
+  delete process.env[DEMO_MODE_KEY];
+});
+
+afterEach(() => {
+  if (savedDemoMode === undefined) {
+    delete process.env[DEMO_MODE_KEY];
+  } else {
+    process.env[DEMO_MODE_KEY] = savedDemoMode;
+  }
+});
 
 describe("isDemoMode", () => {
   it("treats unset and anything but false/0 as demo (banner/seed fail-safe)", () => {
