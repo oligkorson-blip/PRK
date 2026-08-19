@@ -1,0 +1,251 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1784334071361,
+      "tag": "0000_kind_red_skull",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1784357846542,
+      "tag": "0001_spotty_pepper_potts",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1784364573971,
+      "tag": "0002_majestic_lockheed",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1784368435101,
+      "tag": "0003_rename_clerk_and_r2_columns",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1784369322043,
+      "tag": "0004_true_the_fury",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1784380115462,
+      "tag": "0005_cooing_katie_power",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1784381784034,
+      "tag": "0006_wide_the_leader",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1784383176118,
+      "tag": "0007_typical_blizzard",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1784386425091,
+      "tag": "0008_slow_gargoyle",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1784411938426,
+      "tag": "0009_stormy_nomad",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1784418000000,
+      "tag": "0010_productization_options",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1784419000000,
+      "tag": "0011_apply_first",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1784500000000,
+      "tag": "0012_distributions_ledger",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "7",
+      "when": 1784501000000,
+      "tag": "0013_asset_images",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "7",
+      "when": 1784604741915,
+      "tag": "0014_ib_lead_ownership",
+      "breakpoints": true
+    },
+    {
+      "idx": 15,
+      "version": "7",
+      "when": 1784608994309,
+      "tag": "0015_staff_soft_delete",
+      "breakpoints": true
+    },
+    {
+      "idx": 16,
+      "version": "7",
+      "when": 1784675038188,
+      "tag": "0016_sleepy_madripoor",
+      "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "7",
+      "when": 1784707097224,
+      "tag": "0017_brainy_scalphunter",
+      "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "7",
+      "when": 1784714997737,
+      "tag": "0018_perpetual_lady_bullseye",
+      "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "7",
+      "when": 1784719067474,
+      "tag": "0019_flawless_epoch",
+      "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "7",
+      "when": 1784724788127,
+      "tag": "0020_giant_amazoness",
+      "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "7",
+      "when": 1784909099461,
+      "tag": "0021_chubby_molecule_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 22,
+      "version": "7",
+      "when": 1785006183724,
+      "tag": "0022_sleepy_nextwave",
+      "breakpoints": true
+    },
+    {
+      "idx": 23,
+      "version": "7",
+      "when": 1785007532599,
+      "tag": "0023_lovely_red_shift",
+      "breakpoints": true
+    },
+    {
+      "idx": 24,
+      "version": "7",
+      "when": 1785017332699,
+      "tag": "0024_simple_clea",
+      "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "7",
+      "when": 1785020659781,
+      "tag": "0025_overrated_azazel",
+      "breakpoints": true
+    },
+    {
+      "idx": 26,
+      "version": "7",
+      "when": 1785021203959,
+      "tag": "0026_soft_princess_powerful",
+      "breakpoints": true
+    },
+    {
+      "idx": 27,
+      "version": "7",
+      "when": 1785281462172,
+      "tag": "0027_nappy_triton",
+      "breakpoints": true
+    },
+    {
+      "idx": 28,
+      "version": "7",
+      "when": 1785285861475,
+      "tag": "0028_slim_energizer",
+      "breakpoints": true
+    },
+    {
+      "idx": 29,
+      "version": "7",
+      "when": 1785614677884,
+      "tag": "0029_contract_lifecycle",
+      "breakpoints": true
+    },
+    {
+      "idx": 30,
+      "version": "7",
+      "when": 1785621819782,
+      "tag": "0030_contract_signature_identity",
+      "breakpoints": true
+    },
+    {
+      "idx": 31,
+      "version": "7",
+      "when": 1785680000000,
+      "tag": "0031_platform_product_flags",
+      "breakpoints": true
+    },
+    {
+      "idx": 32,
+      "version": "7",
+      "when": 1785685000000,
+      "tag": "0032_community_space_listings",
+      "breakpoints": true
+    },
+    {
+      "idx": 33,
+      "version": "7",
+      "when": 1785685200000,
+      "tag": "0033_investor_pool_access",
+      "breakpoints": true
+    },
+    {
+      "idx": 34,
+      "version": "7",
+      "when": 1786700000000,
+      "tag": "0034_contract_interest_link",
+      "breakpoints": true
+    }
+  ]
+}

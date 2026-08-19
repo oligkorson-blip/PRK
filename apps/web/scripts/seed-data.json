@@ -1,0 +1,2228 @@
+[
+  {
+    "id": "indigo-gare-de-lyon",
+    "name": "INDIGO Gare de Lyon",
+    "operator": "INDIGO",
+    "city": "Paris",
+    "district": "Paris 12",
+    "country": "France",
+    "yield": 7.7,
+    "tier": "Standard",
+    "from": 9900,
+    "spaces": 620,
+    "occupancy": 96.4,
+    "lease": "12 years",
+    "art": 0,
+    "siteType": "station",
+    "blurb": "Next to one of Paris's busiest rail terminals, serving commuters, travellers, and local residents. Bike storage and EV charging sit alongside core parking income.",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 72
+      },
+      {
+        "id": "ev_charging",
+        "pct": 18
+      },
+      {
+        "id": "bicycle_storage",
+        "pct": 10
+      }
+    ],
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · France",
+      "legalName": "INDIGO"
+    },
+    "visitorsPerDay": 1434,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 217,
+    "annualRevenueEur": 1912576,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 9900,
+        "yieldPct": 7.7,
+        "monthlyIncomeEur": 64,
+        "annualIncomeEur": 762,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 21800,
+        "yieldPct": 8.9,
+        "monthlyIncomeEur": 162,
+        "annualIncomeEur": 1940,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "green",
+        "label": "EV option",
+        "recommended": false,
+        "minTicketEur": 17800,
+        "yieldPct": 10.1,
+        "monthlyIncomeEur": 150,
+        "annualIncomeEur": 1798,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "indigo-lyon-part-dieu",
+    "name": "INDIGO Part-Dieu",
+    "operator": "INDIGO",
+    "city": "Lyon",
+    "district": "3rd arr.",
+    "country": "France",
+    "yield": 8.1,
+    "tier": "Premium",
+    "from": 12600,
+    "spaces": 730,
+    "occupancy": 95.5,
+    "lease": "10 years",
+    "art": 1,
+    "siteType": "station",
+    "blurb": "Rail-side parking in Lyon's main business district. Parcel lockers and EV charging add small extra streams on top of parking.",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 70
+      },
+      {
+        "id": "ev_charging",
+        "pct": 18
+      },
+      {
+        "id": "parcel_lockers",
+        "pct": 12
+      }
+    ],
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · France",
+      "legalName": "INDIGO"
+    },
+    "visitorsPerDay": 1673,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 255,
+    "annualRevenueEur": 2230880,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 12600,
+        "yieldPct": 8.1,
+        "monthlyIncomeEur": 85,
+        "annualIncomeEur": 1021,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 27700,
+        "yieldPct": 9.3,
+        "monthlyIncomeEur": 215,
+        "annualIncomeEur": 2576,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "green",
+        "label": "EV option",
+        "recommended": false,
+        "minTicketEur": 22700,
+        "yieldPct": 10.5,
+        "monthlyIncomeEur": 199,
+        "annualIncomeEur": 2384,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "indigo-barcelona-sants",
+    "name": "INDIGO Barcelona Sants",
+    "operator": "INDIGO",
+    "city": "Barcelona",
+    "district": "Sants-Montjuïc",
+    "country": "Spain",
+    "yield": 8,
+    "tier": "Standard",
+    "from": 11800,
+    "spaces": 580,
+    "occupancy": 94.8,
+    "lease": "11 years",
+    "art": 2,
+    "siteType": "station",
+    "blurb": "Sants draws daily commuter and long-distance rail traffic all year. Income here is contracted parking only.",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 100
+      }
+    ],
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · Spain",
+      "legalName": "INDIGO"
+    },
+    "visitorsPerDay": 1320,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 203,
+    "annualRevenueEur": 1759488,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 11800,
+        "yieldPct": 8,
+        "monthlyIncomeEur": 79,
+        "annualIncomeEur": 944,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 26000,
+        "yieldPct": 9.2,
+        "monthlyIncomeEur": 199,
+        "annualIncomeEur": 2392,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "indigo-brussels-midi",
+    "name": "INDIGO Bruxelles-Midi",
+    "operator": "INDIGO",
+    "city": "Brussels",
+    "district": "Saint-Gilles",
+    "country": "Belgium",
+    "yield": 7.9,
+    "tier": "Standard",
+    "from": 11200,
+    "spaces": 490,
+    "occupancy": 95.2,
+    "lease": "12 years",
+    "art": 3,
+    "siteType": "station",
+    "blurb": "Brussels' main international rail hub, with Eurostar and commuter traffic through the week. Income is contracted parking only.",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 100
+      }
+    ],
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · Belgium",
+      "legalName": "INDIGO"
+    },
+    "visitorsPerDay": 1120,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 172,
+    "annualRevenueEur": 1492736,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 11200,
+        "yieldPct": 7.9,
+        "monthlyIncomeEur": 74,
+        "annualIncomeEur": 885,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 24600,
+        "yieldPct": 9.1,
+        "monthlyIncomeEur": 187,
+        "annualIncomeEur": 2239,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "qpark-berlin-potsdamer",
+    "name": "Q-Park Potsdamer Platz",
+    "operator": "Q-Park",
+    "city": "Berlin",
+    "district": "Mitte",
+    "country": "Germany",
+    "yield": 8.5,
+    "tier": "Premium",
+    "from": 16800,
+    "spaces": 640,
+    "occupancy": 95.9,
+    "lease": "12 years",
+    "art": 1,
+    "siteType": "city",
+    "blurb": "Between the offices, shops, and venues around Potsdamer Platz. Car-sharing bays and EV charging add to core parking income.",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 75
+      },
+      {
+        "id": "ev_charging",
+        "pct": 15
+      },
+      {
+        "id": "car_sharing",
+        "pct": 10
+      }
+    ],
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · Germany",
+      "legalName": "Q-Park"
+    },
+    "visitorsPerDay": 1473,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 224,
+    "annualRevenueEur": 1964032,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 16800,
+        "yieldPct": 8.5,
+        "monthlyIncomeEur": 119,
+        "annualIncomeEur": 1428,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 37000,
+        "yieldPct": 9.7,
+        "monthlyIncomeEur": 299,
+        "annualIncomeEur": 3589,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "green",
+        "label": "EV option",
+        "recommended": false,
+        "minTicketEur": 30200,
+        "yieldPct": 10.9,
+        "monthlyIncomeEur": 274,
+        "annualIncomeEur": 3292,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "qpark-antwerp-centraal",
+    "name": "Q-Park Antwerpen-Centraal",
+    "operator": "Q-Park",
+    "city": "Antwerp",
+    "district": "Centrum",
+    "country": "Belgium",
+    "yield": 8,
+    "tier": "Standard",
+    "from": 13200,
+    "spaces": 380,
+    "occupancy": 94.4,
+    "lease": "11 years",
+    "art": 2,
+    "siteType": "station",
+    "blurb": "Serves one of Europe's busiest rail stations and the streets around it. Income is contracted parking only.",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 100
+      }
+    ],
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · Belgium",
+      "legalName": "Q-Park"
+    },
+    "visitorsPerDay": 861,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 133,
+    "annualRevenueEur": 1147904,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 13200,
+        "yieldPct": 8,
+        "monthlyIncomeEur": 88,
+        "annualIncomeEur": 1056,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 29000,
+        "yieldPct": 9.2,
+        "monthlyIncomeEur": 222,
+        "annualIncomeEur": 2668,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "qpark-paris-opera",
+    "name": "Q-Park Opéra",
+    "operator": "Q-Park",
+    "city": "Paris",
+    "district": "Paris 9",
+    "country": "France",
+    "yield": 7.8,
+    "tier": "Standard",
+    "from": 11400,
+    "spaces": 412,
+    "occupancy": 95.1,
+    "lease": "10 years",
+    "art": 3,
+    "siteType": "city",
+    "blurb": "Theatre, shopping, and office traffic near the Opéra. EV and e-bike charging add small streams on top of parking.",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 74
+      },
+      {
+        "id": "ev_charging",
+        "pct": 16
+      },
+      {
+        "id": "micromobility_charging",
+        "pct": 10
+      }
+    ],
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · France",
+      "legalName": "Q-Park"
+    },
+    "visitorsPerDay": 940,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 144,
+    "annualRevenueEur": 1253798,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 11400,
+        "yieldPct": 7.8,
+        "monthlyIncomeEur": 74,
+        "annualIncomeEur": 889,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 25100,
+        "yieldPct": 9,
+        "monthlyIncomeEur": 188,
+        "annualIncomeEur": 2259,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "green",
+        "label": "EV option",
+        "recommended": false,
+        "minTicketEur": 20500,
+        "yieldPct": 10.2,
+        "monthlyIncomeEur": 174,
+        "annualIncomeEur": 2091,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "apcoa-munich-airport",
+    "name": "APCOA Munich Airport P20",
+    "operator": "APCOA",
+    "city": "Munich",
+    "district": "Flughafen",
+    "country": "Germany",
+    "yield": 8.8,
+    "tier": "Premium",
+    "from": 19800,
+    "spaces": 1200,
+    "occupancy": 96.8,
+    "lease": "15 years",
+    "art": 0,
+    "siteType": "airport",
+    "blurb": "Terminal parking driven by flight schedules — short-stay pickups through multi-day trips. Fleet parking and EV charging add to the core stream.",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 70
+      },
+      {
+        "id": "ev_charging",
+        "pct": 18
+      },
+      {
+        "id": "fleet_parking",
+        "pct": 12
+      }
+    ],
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · Germany",
+      "legalName": "APCOA"
+    },
+    "visitorsPerDay": 2788,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 420,
+    "annualRevenueEur": 3717120,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 19800,
+        "yieldPct": 8.8,
+        "monthlyIncomeEur": 145,
+        "annualIncomeEur": 1742,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 43600,
+        "yieldPct": 10,
+        "monthlyIncomeEur": 363,
+        "annualIncomeEur": 4360,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "green",
+        "label": "EV option",
+        "recommended": false,
+        "minTicketEur": 35600,
+        "yieldPct": 11.2,
+        "monthlyIncomeEur": 332,
+        "annualIncomeEur": 3987,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "apcoa-vienna-schwechat",
+    "name": "APCOA Vienna Airport",
+    "operator": "APCOA",
+    "city": "Vienna",
+    "district": "Schwechat",
+    "country": "Austria",
+    "yield": 8.7,
+    "tier": "Premium",
+    "from": 17600,
+    "spaces": 980,
+    "occupancy": 95.7,
+    "lease": "14 years",
+    "art": 1,
+    "siteType": "airport",
+    "blurb": "Vienna's airport runs around the clock: holidays, business trips, pickups. Vehicle cleaning and EV charging add to parking income.",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 72
+      },
+      {
+        "id": "ev_charging",
+        "pct": 16
+      },
+      {
+        "id": "vehicle_cleaning",
+        "pct": 12
+      }
+    ],
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · Austria",
+      "legalName": "APCOA"
+    },
+    "visitorsPerDay": 2251,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 343,
+    "annualRevenueEur": 3001152,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 17600,
+        "yieldPct": 8.7,
+        "monthlyIncomeEur": 128,
+        "annualIncomeEur": 1531,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 38700,
+        "yieldPct": 9.9,
+        "monthlyIncomeEur": 319,
+        "annualIncomeEur": 3831,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "green",
+        "label": "EV option",
+        "recommended": false,
+        "minTicketEur": 31700,
+        "yieldPct": 11.1,
+        "monthlyIncomeEur": 293,
+        "annualIncomeEur": 3519,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "apcoa-zurich-hb",
+    "name": "APCOA Zürich HB",
+    "operator": "APCOA",
+    "city": "Zurich",
+    "district": "City",
+    "country": "Switzerland",
+    "yield": 8.2,
+    "tier": "Standard",
+    "from": 15200,
+    "spaces": 450,
+    "occupancy": 94.9,
+    "lease": "12 years",
+    "art": 2,
+    "siteType": "station",
+    "blurb": "Under Zurich's main station, in the middle of the city's shopping and office core. Income is contracted parking only.",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 100
+      }
+    ],
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · Switzerland",
+      "legalName": "APCOA"
+    },
+    "visitorsPerDay": 1025,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 158,
+    "annualRevenueEur": 1366560,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 15200,
+        "yieldPct": 8.2,
+        "monthlyIncomeEur": 104,
+        "annualIncomeEur": 1246,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 33400,
+        "yieldPct": 9.4,
+        "monthlyIncomeEur": 262,
+        "annualIncomeEur": 3140,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "apcoa-milan-centrale",
+    "name": "APCOA Milano Centrale",
+    "operator": "APCOA",
+    "city": "Milan",
+    "district": "Stazione Centrale",
+    "country": "Italy",
+    "yield": 9.8,
+    "tier": "EV",
+    "from": 26700,
+    "spaces": 890,
+    "occupancy": 96.1,
+    "lease": "15 years",
+    "art": 3,
+    "siteType": "station",
+    "blurb": "One of Italy's busiest stations, with daily commuter, business, and leisure traffic. Fleet parking and EV charging add to the core stream.",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 65
+      },
+      {
+        "id": "ev_charging",
+        "pct": 20
+      },
+      {
+        "id": "fleet_parking",
+        "pct": 15
+      }
+    ],
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · Italy",
+      "legalName": "APCOA"
+    },
+    "visitorsPerDay": 2053,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 312,
+    "annualRevenueEur": 2736928,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 26700,
+        "yieldPct": 9.8,
+        "monthlyIncomeEur": 218,
+        "annualIncomeEur": 2617,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 58700,
+        "yieldPct": 11,
+        "monthlyIncomeEur": 538,
+        "annualIncomeEur": 6457,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "green",
+        "label": "EV option",
+        "recommended": false,
+        "minTicketEur": 48100,
+        "yieldPct": 12.2,
+        "monthlyIncomeEur": 489,
+        "annualIncomeEur": 5868,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "apcoa-hamburg-jungfernstieg",
+    "name": "APCOA Jungfernstieg",
+    "operator": "APCOA",
+    "city": "Hamburg",
+    "district": "Neustadt",
+    "country": "Germany",
+    "yield": 8.3,
+    "tier": "Standard",
+    "from": 14800,
+    "spaces": 520,
+    "occupancy": 95.4,
+    "lease": "11 years",
+    "art": 4,
+    "siteType": "retail",
+    "blurb": "Hamburg's prime shopping waterfront, busy seven days a week. Income is contracted parking only.",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 100
+      }
+    ],
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · Germany",
+      "legalName": "APCOA"
+    },
+    "visitorsPerDay": 1191,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 182,
+    "annualRevenueEur": 1587456,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 14800,
+        "yieldPct": 8.3,
+        "monthlyIncomeEur": 102,
+        "annualIncomeEur": 1228,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 32600,
+        "yieldPct": 9.5,
+        "monthlyIncomeEur": 258,
+        "annualIncomeEur": 3097,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "effia-gare-du-nord",
+    "name": "Effia Gare du Nord",
+    "operator": "Effia",
+    "city": "Paris",
+    "district": "Paris 10",
+    "country": "France",
+    "yield": 8.1,
+    "tier": "Premium",
+    "from": 12500,
+    "spaces": 540,
+    "occupancy": 97.2,
+    "lease": "15 years",
+    "art": 0,
+    "siteType": "station",
+    "blurb": "Europe's busiest rail station by passenger numbers — commuter, Eurostar, and local demand in one. Bike storage and EV charging sit alongside parking.",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 70
+      },
+      {
+        "id": "ev_charging",
+        "pct": 20
+      },
+      {
+        "id": "bicycle_storage",
+        "pct": 10
+      }
+    ],
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · France",
+      "legalName": "Effia"
+    },
+    "visitorsPerDay": 1260,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 189,
+    "annualRevenueEur": 1679616,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 12500,
+        "yieldPct": 8.1,
+        "monthlyIncomeEur": 84,
+        "annualIncomeEur": 1013,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 27500,
+        "yieldPct": 9.3,
+        "monthlyIncomeEur": 213,
+        "annualIncomeEur": 2558,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "green",
+        "label": "EV option",
+        "recommended": false,
+        "minTicketEur": 22500,
+        "yieldPct": 10.5,
+        "monthlyIncomeEur": 197,
+        "annualIncomeEur": 2363,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "effia-marseille-saint-charles",
+    "name": "Effia Saint-Charles",
+    "operator": "Effia",
+    "city": "Marseille",
+    "district": "1st arr.",
+    "country": "France",
+    "yield": 9.5,
+    "tier": "EV",
+    "from": 24100,
+    "spaces": 640,
+    "occupancy": 94.9,
+    "lease": "12 years",
+    "art": 1,
+    "siteType": "station",
+    "blurb": "The gateway station for Marseille and the coast beyond. E-bike and EV charging add small extra streams.",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 68
+      },
+      {
+        "id": "ev_charging",
+        "pct": 20
+      },
+      {
+        "id": "micromobility_charging",
+        "pct": 12
+      }
+    ],
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · France",
+      "legalName": "Effia"
+    },
+    "visitorsPerDay": 1458,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 224,
+    "annualRevenueEur": 1943552,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 24100,
+        "yieldPct": 9.5,
+        "monthlyIncomeEur": 191,
+        "annualIncomeEur": 2290,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 53000,
+        "yieldPct": 10.7,
+        "monthlyIncomeEur": 473,
+        "annualIncomeEur": 5671,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "green",
+        "label": "EV option",
+        "recommended": false,
+        "minTicketEur": 43400,
+        "yieldPct": 11.9,
+        "monthlyIncomeEur": 430,
+        "annualIncomeEur": 5165,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "effia-bordeaux-saint-jean",
+    "name": "Effia Bordeaux Saint-Jean",
+    "operator": "Effia",
+    "city": "Bordeaux",
+    "district": "Saint-Jean",
+    "country": "France",
+    "yield": 8,
+    "tier": "Standard",
+    "from": 10900,
+    "spaces": 480,
+    "occupancy": 95,
+    "lease": "12 years",
+    "art": 2,
+    "siteType": "station",
+    "blurb": "Bordeaux's main rail hub, rebuilt around the high-speed line to Paris. Income is contracted parking only.",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 100
+      }
+    ],
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · France",
+      "legalName": "Effia"
+    },
+    "visitorsPerDay": 1094,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 168,
+    "annualRevenueEur": 1459200,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 10900,
+        "yieldPct": 8,
+        "monthlyIncomeEur": 73,
+        "annualIncomeEur": 872,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 24000,
+        "yieldPct": 9.2,
+        "monthlyIncomeEur": 184,
+        "annualIncomeEur": 2208,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "effia-lyon-perrache",
+    "name": "Effia Lyon Perrache",
+    "operator": "Effia",
+    "city": "Lyon",
+    "district": "2nd arr.",
+    "country": "France",
+    "yield": 8.3,
+    "tier": "Standard",
+    "from": 12100,
+    "spaces": 560,
+    "occupancy": 96,
+    "lease": "13 years",
+    "art": 3,
+    "siteType": "station",
+    "blurb": "Lyon's historic central station, mixing commuter, metro, and shopping traffic. Bike storage and EV charging add to parking income.",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 74
+      },
+      {
+        "id": "ev_charging",
+        "pct": 16
+      },
+      {
+        "id": "bicycle_storage",
+        "pct": 10
+      }
+    ],
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · France",
+      "legalName": "Effia"
+    },
+    "visitorsPerDay": 1290,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 196,
+    "annualRevenueEur": 1720320,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 12100,
+        "yieldPct": 8.3,
+        "monthlyIncomeEur": 84,
+        "annualIncomeEur": 1004,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 26600,
+        "yieldPct": 9.5,
+        "monthlyIncomeEur": 211,
+        "annualIncomeEur": 2527,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "green",
+        "label": "EV option",
+        "recommended": false,
+        "minTicketEur": 21800,
+        "yieldPct": 10.7,
+        "monthlyIncomeEur": 194,
+        "annualIncomeEur": 2333,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "euro-car-parks-dublin-airport",
+    "name": "Euro Car Parks Dublin Airport",
+    "operator": "Euro Car Parks",
+    "city": "Dublin",
+    "district": "Collinstown",
+    "country": "Ireland",
+    "yield": 8.4,
+    "tier": "Standard",
+    "from": 14200,
+    "spaces": 860,
+    "occupancy": 96.2,
+    "lease": "12 years",
+    "art": 2,
+    "siteType": "airport",
+    "blurb": "Dublin Airport's passenger growth drives short- and long-stay demand. Income is contracted parking only.",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 100
+      }
+    ],
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · Ireland",
+      "legalName": "Euro Car Parks"
+    },
+    "visitorsPerDay": 1986,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 301,
+    "annualRevenueEur": 2647424,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 14200,
+        "yieldPct": 8.4,
+        "monthlyIncomeEur": 99,
+        "annualIncomeEur": 1193,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 31200,
+        "yieldPct": 9.6,
+        "monthlyIncomeEur": 250,
+        "annualIncomeEur": 2995,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "interparking-brussels-sablon",
+    "name": "Interparking Sablon",
+    "operator": "Interparking",
+    "city": "Brussels",
+    "district": "City centre",
+    "country": "Belgium",
+    "yield": 8.4,
+    "tier": "Premium",
+    "from": 15800,
+    "spaces": 350,
+    "occupancy": 94.6,
+    "lease": "11 years",
+    "art": 0,
+    "siteType": "city",
+    "blurb": "The Sablon's restaurants, galleries, and antiques market keep evenings and weekends busy. Car sharing and EV charging add to parking income.",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 76
+      },
+      {
+        "id": "ev_charging",
+        "pct": 14
+      },
+      {
+        "id": "car_sharing",
+        "pct": 10
+      }
+    ],
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · Belgium",
+      "legalName": "Interparking"
+    },
+    "visitorsPerDay": 800,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 122,
+    "annualRevenueEur": 1059520,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 15800,
+        "yieldPct": 8.4,
+        "monthlyIncomeEur": 111,
+        "annualIncomeEur": 1327,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 34800,
+        "yieldPct": 9.6,
+        "monthlyIncomeEur": 278,
+        "annualIncomeEur": 3341,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "green",
+        "label": "EV option",
+        "recommended": false,
+        "minTicketEur": 28400,
+        "yieldPct": 10.8,
+        "monthlyIncomeEur": 256,
+        "annualIncomeEur": 3067,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "interparking-paris-madeleine",
+    "name": "Interparking Madeleine",
+    "operator": "Interparking",
+    "city": "Paris",
+    "district": "Paris 8",
+    "country": "France",
+    "yield": 7.9,
+    "tier": "Standard",
+    "from": 12800,
+    "spaces": 390,
+    "occupancy": 95.3,
+    "lease": "10 years",
+    "art": 1,
+    "siteType": "city",
+    "blurb": "Office, shopping, and theatre traffic around the Madeleine. Income is contracted parking only.",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 100
+      }
+    ],
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · France",
+      "legalName": "Interparking"
+    },
+    "visitorsPerDay": 892,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 137,
+    "annualRevenueEur": 1189344,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 12800,
+        "yieldPct": 7.9,
+        "monthlyIncomeEur": 84,
+        "annualIncomeEur": 1011,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 28200,
+        "yieldPct": 9.1,
+        "monthlyIncomeEur": 214,
+        "annualIncomeEur": 2566,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "interparking-madrid-atocha",
+    "name": "Interparking Atocha",
+    "operator": "Interparking",
+    "city": "Madrid",
+    "district": "Arganzuela",
+    "country": "Spain",
+    "yield": 10.4,
+    "tier": "EV",
+    "from": 28900,
+    "spaces": 770,
+    "occupancy": 97.9,
+    "lease": "13 years",
+    "art": 3,
+    "siteType": "station",
+    "blurb": "Madrid's main station for high-speed and commuter rail. Bike storage and EV charging add small streams on top of parking.",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 72
+      },
+      {
+        "id": "ev_charging",
+        "pct": 18
+      },
+      {
+        "id": "bicycle_storage",
+        "pct": 10
+      }
+    ],
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · Spain",
+      "legalName": "Interparking"
+    },
+    "visitorsPerDay": 1809,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 270,
+    "annualRevenueEur": 2412256,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 28900,
+        "yieldPct": 10.4,
+        "monthlyIncomeEur": 251,
+        "annualIncomeEur": 3006,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 63600,
+        "yieldPct": 11.6,
+        "monthlyIncomeEur": 615,
+        "annualIncomeEur": 7378,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "green",
+        "label": "EV option",
+        "recommended": false,
+        "minTicketEur": 52000,
+        "yieldPct": 12.8,
+        "monthlyIncomeEur": 555,
+        "annualIncomeEur": 6656,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "interparking-munich-marienplatz",
+    "name": "Interparking Marienplatz",
+    "operator": "Interparking",
+    "city": "Munich",
+    "district": "Altstadt",
+    "country": "Germany",
+    "yield": 8.6,
+    "tier": "Premium",
+    "from": 18100,
+    "spaces": 360,
+    "occupancy": 96,
+    "lease": "12 years",
+    "art": 4,
+    "siteType": "city",
+    "blurb": "Munich's central square — offices, retail, and year-round visitor demand. Income is contracted parking only.",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 100
+      }
+    ],
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · Germany",
+      "legalName": "Interparking"
+    },
+    "visitorsPerDay": 829,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 126,
+    "annualRevenueEur": 1105920,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 18100,
+        "yieldPct": 8.6,
+        "monthlyIncomeEur": 130,
+        "annualIncomeEur": 1557,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 39800,
+        "yieldPct": 9.8,
+        "monthlyIncomeEur": 325,
+        "annualIncomeEur": 3900,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lyon-part-dieu-hub",
+    "name": "Lyon Part-Dieu",
+    "operator": "Effia",
+    "city": "Lyon",
+    "district": "Part-Dieu",
+    "country": "France",
+    "yield": 8.1,
+    "tier": "Core",
+    "from": 12500,
+    "spaces": 620,
+    "occupancy": 88,
+    "lease": "12–18 years",
+    "art": 2,
+    "siteType": "station",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 78
+      },
+      {
+        "id": "ev_charging",
+        "pct": 12
+      },
+      {
+        "id": "bicycle_storage",
+        "pct": 10
+      }
+    ],
+    "blurb": "Attached to Part-Dieu station and its shopping centre — rail, office, and retail traffic in one place. Bike storage and EV charging sit alongside parking.",
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · France",
+      "legalName": "Effia"
+    },
+    "visitorsPerDay": 1309,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 217,
+    "annualRevenueEur": 1745920,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 12500,
+        "yieldPct": 8.1,
+        "monthlyIncomeEur": 84,
+        "annualIncomeEur": 1013,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 27500,
+        "yieldPct": 9.3,
+        "monthlyIncomeEur": 213,
+        "annualIncomeEur": 2558,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "green",
+        "label": "EV option",
+        "recommended": false,
+        "minTicketEur": 22500,
+        "yieldPct": 10.5,
+        "monthlyIncomeEur": 197,
+        "annualIncomeEur": 2363,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cologne-main-station-hub",
+    "name": "Cologne Hauptbahnhof",
+    "operator": "APCOA",
+    "city": "Cologne",
+    "district": "Altstadt-Nord",
+    "country": "Germany",
+    "yield": 7.9,
+    "tier": "Core",
+    "from": 11800,
+    "spaces": 540,
+    "occupancy": 86,
+    "lease": "10–15 years",
+    "art": 1,
+    "siteType": "station",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 82
+      },
+      {
+        "id": "ev_charging",
+        "pct": 18
+      }
+    ],
+    "blurb": "Next to Cologne's main station, one of Germany's busiest. EV charging adds a small stream on top of parking.",
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · Germany",
+      "legalName": "APCOA"
+    },
+    "visitorsPerDay": 1115,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 189,
+    "annualRevenueEur": 1486080,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 11800,
+        "yieldPct": 7.9,
+        "monthlyIncomeEur": 78,
+        "annualIncomeEur": 932,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 26000,
+        "yieldPct": 9.1,
+        "monthlyIncomeEur": 197,
+        "annualIncomeEur": 2366,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "green",
+        "label": "EV option",
+        "recommended": false,
+        "minTicketEur": 21200,
+        "yieldPct": 10.3,
+        "monthlyIncomeEur": 182,
+        "annualIncomeEur": 2184,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "milan-centrale-hub",
+    "name": "Milan Centrale",
+    "operator": "Interparking",
+    "city": "Milan",
+    "district": "Centrale",
+    "country": "Italy",
+    "yield": 8.4,
+    "tier": "Core",
+    "from": 13200,
+    "spaces": 710,
+    "occupancy": 90,
+    "lease": "12–20 years",
+    "art": 3,
+    "siteType": "station",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 75
+      },
+      {
+        "id": "ev_charging",
+        "pct": 15
+      },
+      {
+        "id": "parcel_lockers",
+        "pct": 10
+      }
+    ],
+    "blurb": "Rail-side parking steps from Centrale's platforms. Parcel lockers and EV charging add to core parking income.",
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · Italy",
+      "legalName": "Interparking"
+    },
+    "visitorsPerDay": 1534,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 248,
+    "annualRevenueEur": 2044800,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 13200,
+        "yieldPct": 8.4,
+        "monthlyIncomeEur": 92,
+        "annualIncomeEur": 1109,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 29000,
+        "yieldPct": 9.6,
+        "monthlyIncomeEur": 232,
+        "annualIncomeEur": 2784,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "green",
+        "label": "EV option",
+        "recommended": false,
+        "minTicketEur": 23800,
+        "yieldPct": 10.8,
+        "monthlyIncomeEur": 214,
+        "annualIncomeEur": 2570,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dublin-docklands-hub",
+    "name": "Dublin Docklands",
+    "operator": "Q-Park",
+    "city": "Dublin",
+    "district": "Docklands",
+    "country": "Ireland",
+    "yield": 8,
+    "tier": "Core",
+    "from": 14000,
+    "spaces": 380,
+    "occupancy": 84,
+    "lease": "10–15 years",
+    "art": 0,
+    "siteType": "city",
+    "incomeMix": [
+      {
+        "id": "vehicle_parking",
+        "pct": 80
+      },
+      {
+        "id": "ev_charging",
+        "pct": 20
+      }
+    ],
+    "blurb": "Office towers and venues across the Docklands keep weekday demand steady. EV charging adds a small extra stream.",
+    "operatorDisplay": {
+      "mode": "pattern",
+      "label": "National parking operator · Ireland",
+      "legalName": "Q-Park"
+    },
+    "visitorsPerDay": 800,
+    "visitorsProvenance": "modelled",
+    "availableSpaces": 133,
+    "annualRevenueEur": 1021440,
+    "revenueProvenance": "modelled",
+    "commercialTermIds": [
+      "triple_net",
+      "contractual_monthly_rent",
+      "indexation_floor",
+      "parkwise_protections",
+      "flexible_term"
+    ],
+    "investmentOptions": [
+      {
+        "id": "standard",
+        "label": "Standard option",
+        "recommended": true,
+        "minTicketEur": 14000,
+        "yieldPct": 8,
+        "monthlyIncomeEur": 93,
+        "annualIncomeEur": 1120,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "premium",
+        "label": "Premium option",
+        "recommended": false,
+        "minTicketEur": 30800,
+        "yieldPct": 9.2,
+        "monthlyIncomeEur": 236,
+        "annualIncomeEur": 2834,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      },
+      {
+        "id": "green",
+        "label": "EV option",
+        "recommended": false,
+        "minTicketEur": 25200,
+        "yieldPct": 10.4,
+        "monthlyIncomeEur": 218,
+        "annualIncomeEur": 2621,
+        "commercialTermIds": [
+          "triple_net",
+          "contractual_monthly_rent",
+          "indexation_floor",
+          "parkwise_protections",
+          "flexible_term"
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,1 @@
+ALTER TABLE "assets" ADD COLUMN "income_mix" jsonb DEFAULT '[{"id":"vehicle_parking","pct":100}]'::jsonb NOT NULL;

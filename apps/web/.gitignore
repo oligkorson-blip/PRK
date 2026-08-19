@@ -1,0 +1,15 @@
+/node_modules
+/.next/
+/out/
+.env
+.env*.local
+.env.docker.local
+npm-debug.log*
+.DS_Store
+*.tsbuildinfo
+/test-results/
+/playwright-report/
+/blob-report/
+/.data/
+/backups/
+*.bak*

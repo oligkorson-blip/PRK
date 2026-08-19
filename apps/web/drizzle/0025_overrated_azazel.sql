@@ -1,0 +1,1 @@
+ALTER TABLE "account" ADD COLUMN "password_set_at" timestamp;

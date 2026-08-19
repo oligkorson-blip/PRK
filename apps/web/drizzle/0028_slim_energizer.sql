@@ -1,0 +1,1 @@
+ALTER TABLE "assets" ADD COLUMN "cover_image_caption" text;

@@ -1,0 +1,83 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-parkwise}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-parkwise}
+      POSTGRES_DB: ${POSTGRES_DB:-parkwise}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      args:
+        BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:-build-time-secret-replace-at-runtime}
+        BETTER_AUTH_URL: ${BETTER_AUTH_URL:-http://localhost:3000}
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-parkwise}:${POSTGRES_PASSWORD:-parkwise}@postgres:5432/${POSTGRES_DB:-parkwise}
+      DOCUMENTS_DIR: /data/documents
+      # AES-256-GCM at-rest key for the document vault (see docs/SETUP.md); unset = plaintext in demo mode only, fail-closed when DEMO_MODE=false
+      DOCUMENTS_ENCRYPTION_KEY: ${DOCUMENTS_ENCRYPTION_KEY:-}
+      DEMO_MODE: ${DEMO_MODE:-true}
+      BETTER_AUTH_URL: ${BETTER_AUTH_URL:-http://localhost:3000}
+      NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:?BETTER_AUTH_SECRET must be set - see docs/SETUP.md}
+      SUPER_ADMIN_EMAILS: ${SUPER_ADMIN_EMAILS}
+      ADMIN_EMAILS: ${ADMIN_EMAILS:-}
+      OPS_INBOX_EMAIL: ${OPS_INBOX_EMAIL:-}
+      # One-time first admin signup; leave unset otherwise (apply-first)
+      ALLOW_BOOTSTRAP_SIGNUP: ${ALLOW_BOOTSTRAP_SIGNUP:-}
+      # Seed guard: required as 1/true when running db:seed with DEMO_MODE=false
+      CONFIRM_SEED: ${CONFIRM_SEED:-}
+      # CRO R3: set true only when a funded buyback mechanism exists
+      BUYBACK_FUNDED: ${BUYBACK_FUNDED:-}
+      # Code default is 127.0.0.1,::1 when unset; keep it as the compose default
+      TRUSTED_PROXIES: ${TRUSTED_PROXIES:-127.0.0.1,::1}
+      IP_ENRICHMENT_API_URL: ${IP_ENRICHMENT_API_URL:-}
+      IP_ENRICHMENT_API_KEY: ${IP_ENRICHMENT_API_KEY:-}
+      IP_ENRICHMENT_MMDB_PATH: ${IP_ENRICHMENT_MMDB_PATH:-}
+      # Optional SMTP; when SMTP_HOST is unset, sends skip-log (see docs/SETUP.md)
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-}
+      SMTP_SECURE: ${SMTP_SECURE:-}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      SMTP_FROM: ${SMTP_FROM:-}
+    volumes:
+      - documents_data:/data/documents
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  documents_data:

@@ -1,0 +1,61 @@
+# Local viewing stack: Postgres + Next.js `next dev` (no production image build).
+# Usage (from apps/web):
+#   npm run docker:local
+# or:
+#   ./scripts/docker-local.sh
+#
+# Prefer this over `docker compose up --build` when you only need to browse the app —
+# the production Dockerfile runs a full `next build` and can take many minutes / OOM
+# if another Next process is already using RAM on port 3000.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-parkwise}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-parkwise}
+      POSTGRES_DB: ${POSTGRES_DB:-parkwise}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+    restart: unless-stopped
+
+  web:
+    image: node:22-bookworm-slim
+    working_dir: /app
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-parkwise}:${POSTGRES_PASSWORD:-parkwise}@postgres:5432/${POSTGRES_DB:-parkwise}
+      DOCUMENTS_DIR: /data/documents
+      DOCUMENTS_ENCRYPTION_KEY: ${DOCUMENTS_ENCRYPTION_KEY:-}
+      DEMO_MODE: ${DEMO_MODE:-true}
+      BETTER_AUTH_URL: ${BETTER_AUTH_URL:-http://localhost:3000}
+      NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:?BETTER_AUTH_SECRET must be set}
+      SUPER_ADMIN_EMAILS: ${SUPER_ADMIN_EMAILS:-ops@example.com}
+      ALLOW_BOOTSTRAP_SIGNUP: ${ALLOW_BOOTSTRAP_SIGNUP:-true}
+      CONFIRM_SEED: ${CONFIRM_SEED:-}
+      WATCHPACK_POLLING: "true"
+      CHOKIDAR_USEPOLLING: "true"
+    volumes:
+      - .:/app
+      - web_node_modules:/app/node_modules
+      - documents_data:/data/documents
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: ["sh", "scripts/docker-dev-entrypoint.sh"]
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  documents_data:
+  web_node_modules:
