@@ -8,11 +8,13 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
-# Build-time placeholders (.env is dockerignored). Runtime overrides via compose.
-ARG BETTER_AUTH_SECRET=build-time-secret-replace-at-runtime
-ARG BETTER_AUTH_URL=http://localhost:3000
-ENV BETTER_AUTH_SECRET=$BETTER_AUTH_SECRET
-ENV BETTER_AUTH_URL=$BETTER_AUTH_URL
+# Fixed throwaway build-time placeholders only (.env is dockerignored). Never
+# forward the real BETTER_AUTH_SECRET as a build ARG: ARG values persist in
+# image history (`docker history`) even though the builder stage is discarded.
+# The runner stage starts fresh from the base image, so these ENVs do not
+# ship — the real secret is injected at runtime via compose/Coolify env vars.
+ENV BETTER_AUTH_SECRET=build-time-secret-replace-at-runtime
+ENV BETTER_AUTH_URL=http://localhost:3000
 RUN npm run build
 
 FROM node:22-bookworm-slim AS runner
