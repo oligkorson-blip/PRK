@@ -20,6 +20,7 @@ export function AdminInterestActions({
 }) {
   const router = useRouter();
   const [note, setNote] = useState("");
+  const [investorMessage, setInvestorMessage] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
@@ -49,7 +50,7 @@ export function AdminInterestActions({
         const result =
           action === "confirm"
             ? await confirmInterest({ interestId, adminNote: note })
-            : await declineInterest({ interestId, adminNote: note });
+            : await declineInterest({ interestId, adminNote: note, investorMessage });
         if (result.ok) {
           if (result.pendingSecondApproval) {
             setNotice("First approval recorded — a second super admin must confirm.");
@@ -95,7 +96,7 @@ export function AdminInterestActions({
         <p className="field-hint">Awaiting second approval (approved by {pendingApprovalByEmail})</p>
       ) : null}
       <label className="form-field">
-        <span>Admin note (optional)</span>
+        <span>Internal note (optional)</span>
         <textarea
           rows={2}
           maxLength={500}
@@ -103,6 +104,22 @@ export function AdminInterestActions({
           onChange={(event) => setNote(event.target.value)}
           disabled={isPending}
         />
+        <span className="field-hint">
+          Staff only — stored on the record and in the audit log. Never sent to the investor.
+        </span>
+      </label>
+      <label className="form-field">
+        <span>Message to the investor (optional)</span>
+        <textarea
+          rows={2}
+          maxLength={500}
+          value={investorMessage}
+          onChange={(event) => setInvestorMessage(event.target.value)}
+          disabled={isPending}
+        />
+        <span className="field-hint">
+          Quoted verbatim in the decline email. Leave blank to send the standard wording.
+        </span>
       </label>
       <div className="admin-interest-actions-buttons">
         <button
