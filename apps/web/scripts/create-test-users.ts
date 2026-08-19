@@ -13,7 +13,7 @@ config({ path: path.join(__dirname, "../.env.local") });
 config({ path: path.join(__dirname, "../.env") });
 
 import { hashPassword } from "better-auth/crypto";
-import { db } from "@/lib/db";
+import { db, staffProfiles } from "@/lib/db";
 import { user, account } from "@/lib/db/auth-schema";
 import { eq } from "drizzle-orm";
 import { randomUUID } from "crypto";
@@ -63,8 +63,24 @@ async function main() {
     process.exit(1);
   }
 
-  await ensureUser("ops@parkwise.eu", "Ops Admin", password);
+  const opsId = await ensureUser("ops@parkwise.eu", "Ops Admin", password);
   await ensureUser("investor@example.com", "Demo Investor", password);
+
+  // E2E flows that submit public host enquiries need a super-admin staff profile
+  // (lib/leads/inbound-list.ts ensureLeadListId). Create it here so tests do not
+  // depend on a prior ops sign-in to materialize the row.
+  const now = new Date();
+  await db
+    .insert(staffProfiles)
+    .values({
+      authUserId: opsId,
+      email: "ops@parkwise.eu",
+      role: "super_admin",
+      createdAt: now,
+      updatedAt: now
+    })
+    .onConflictDoNothing();
+
   process.exit(0);
 }
 

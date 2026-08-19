@@ -49,7 +49,7 @@ import { auditEvents, investors } from "@/lib/db";
 import { isUniqueViolation } from "@/lib/db/errors";
 import { linkLeadOnInvestorCreate } from "@/lib/leads/link";
 
-const user = { id: "auth-1", email: "investor@example.com" };
+const user = { id: "auth-1", email: "investor@example.com", emailVerified: true };
 const created = {
   id: "inv-1",
   authUserId: user.id,

@@ -3,7 +3,10 @@ services:
     image: postgres:16-alpine
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-parkwise}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-parkwise}
+      # No default password in the production compose file — set it explicitly
+      # (see docs/SETUP.md / docs/DEPLOY_NJALLA_COOLIFY.md). Local dev uses
+      # docker-compose.dev.yml / scripts/docker-local.sh, which generate one.
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be set - see docs/SETUP.md}
       POSTGRES_DB: ${POSTGRES_DB:-parkwise}
     ports:
       - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
@@ -23,15 +26,14 @@ services:
     restart: unless-stopped
 
   web:
+    # No build args: the Dockerfile uses fixed throwaway build-time values, so
+    # the real BETTER_AUTH_SECRET never enters image history. Runtime env only.
     build:
       context: .
-      args:
-        BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:-build-time-secret-replace-at-runtime}
-        BETTER_AUTH_URL: ${BETTER_AUTH_URL:-http://localhost:3000}
     ports:
       - "127.0.0.1:3000:3000"
     environment:
-      DATABASE_URL: postgresql://${POSTGRES_USER:-parkwise}:${POSTGRES_PASSWORD:-parkwise}@postgres:5432/${POSTGRES_DB:-parkwise}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-parkwise}:${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be set - see docs/SETUP.md}@postgres:5432/${POSTGRES_DB:-parkwise}
       DOCUMENTS_DIR: /data/documents
       # AES-256-GCM at-rest key for the document vault (see docs/SETUP.md); unset = plaintext in demo mode only, fail-closed when DEMO_MODE=false
       DOCUMENTS_ENCRYPTION_KEY: ${DOCUMENTS_ENCRYPTION_KEY:-}
@@ -39,7 +41,7 @@ services:
       BETTER_AUTH_URL: ${BETTER_AUTH_URL:-http://localhost:3000}
       NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
       BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:?BETTER_AUTH_SECRET must be set - see docs/SETUP.md}
-      SUPER_ADMIN_EMAILS: ${SUPER_ADMIN_EMAILS}
+      SUPER_ADMIN_EMAILS: ${SUPER_ADMIN_EMAILS:?SUPER_ADMIN_EMAILS must be set - see docs/SETUP.md}
       ADMIN_EMAILS: ${ADMIN_EMAILS:-}
       OPS_INBOX_EMAIL: ${OPS_INBOX_EMAIL:-}
       # One-time first admin signup; leave unset otherwise (apply-first)

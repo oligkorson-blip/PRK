@@ -3,6 +3,7 @@ import { isUniqueViolation } from "@/lib/db/errors";
 import { and, eq, isNull, sql } from "drizzle-orm";
 import { auditEvents, db, investors, leads } from "@/lib/db";
 import { linkLeadOnInvestorCreate } from "@/lib/leads/link";
+import { isEmailVerificationRequired } from "./auth";
 import { requireSessionUser } from "./session";
 import { requireStaff } from "./staff";
 
@@ -27,11 +28,21 @@ type InvestorRow = NonNullable<Awaited<ReturnType<typeof getExistingInvestor>>>;
  * Claim the unowned investor row created by /apply when the applicant later
  * signs in. The email preflight avoids an extra transaction for ordinary new
  * users; the row is locked and rechecked before the auth id is attached.
+ *
+ * Claiming hands over everything on the row — KYC documents, interests,
+ * holdings — to whichever auth account presents the matching email. That is
+ * safe today only because signup is closed (bootstrap/invite provisioning);
+ * once email verification is enabled (see REQUIRE_EMAIL_VERIFICATION in
+ * lib/auth/auth.ts), an unverified address must never claim the row.
  */
 async function claimUnclaimedInvestorByEmail(user: {
   id: string;
   email: string;
+  emailVerified: boolean;
 }): Promise<InvestorRow | null> {
+  if (isEmailVerificationRequired() && !user.emailVerified) {
+    return null;
+  }
   const email = user.email.toLowerCase();
   const [candidate] = await db
     .select()

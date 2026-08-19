@@ -19,6 +19,23 @@ const trustedProxies = (process.env.TRUSTED_PROXIES ?? "127.0.0.1,::1")
   .map((entry) => entry.trim())
   .filter(Boolean);
 
+// Email verification is intentionally off while signup is limited to the
+// SUPER_ADMIN_EMAILS bootstrap. If signup ever opens beyond bootstrap (see
+// areSignupsDisabled in lib/auth/signups.ts), flip this to true and wire
+// sendVerificationEmail first so unverified addresses cannot sign in.
+// lib/auth/investor.ts reads this via isEmailVerificationRequired() to gate
+// the unclaimed-investor claim on a verified address.
+const REQUIRE_EMAIL_VERIFICATION = false;
+
+/**
+ * Single source for "must an email address be verified before it can act?"
+ * The investor claim path refuses to attach an unclaimed investor row (KYC
+ * documents, interests, holdings) to an unverified account when this is on.
+ */
+export function isEmailVerificationRequired(): boolean {
+  return REQUIRE_EMAIL_VERIFICATION;
+}
+
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
     provider: "pg",
@@ -31,10 +48,7 @@ export const auth = betterAuth({
   },
   emailAndPassword: {
     enabled: true,
-    // Email verification is intentionally off while signup is limited to the
-    // SUPER_ADMIN_EMAILS bootstrap. If signup ever opens beyond bootstrap (see
-    // areSignupsDisabled in lib/auth/signups.ts), enable requireEmailVerification
-    // and sendVerificationEmail first so unverified addresses cannot sign in.
+    requireEmailVerification: REQUIRE_EMAIL_VERIFICATION,
     disableSignUp: areSignupsDisabled(),
     minPasswordLength: PASSWORD_MIN_LENGTH,
     maxPasswordLength: PASSWORD_MAX_LENGTH,

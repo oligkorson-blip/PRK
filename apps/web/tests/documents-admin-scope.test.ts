@@ -92,7 +92,8 @@ vi.mock("@/lib/db", () => ({
 import { listDocumentsForAdmin } from "@/lib/documents/queries";
 
 function configureQuery(rows: unknown[]) {
-  const orderBy = vi.fn().mockResolvedValue(rows);
+  const limit = vi.fn().mockResolvedValue(rows);
+  const orderBy = vi.fn().mockReturnValue({ limit });
   const where = vi.fn().mockReturnValue({ orderBy });
   const fourthJoin = vi.fn().mockReturnValue({ where, orderBy });
   const thirdJoin = vi.fn().mockReturnValue({ leftJoin: fourthJoin });

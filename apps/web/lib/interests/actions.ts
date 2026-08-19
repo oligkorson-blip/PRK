@@ -124,6 +124,13 @@ export async function createInterest(input: {
     return { ok: false, error: noteResult.error };
   }
 
+  // Deliberate bounds on the pending pipeline: one pending interest per
+  // investor per asset (below) plus the daily per-investor cap in the claim
+  // transaction. The aggregate pending pipeline per asset is intentionally
+  // uncapped — pending interests are non-binding signals, stated capacity is
+  // enforced at confirm time (confirmInterest locks the asset row and checks
+  // advisory capacity), and ops works the queue. Do not add an asset-level
+  // pending cap without an explicit ops decision.
   const [existingPending] = await db
     .select({ id: interests.id })
     .from(interests)

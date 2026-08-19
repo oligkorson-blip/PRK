@@ -217,6 +217,12 @@ export type AdminDocumentRow = DocumentRow & {
   uploaderEmail: string | null;
 };
 
+// Safety bound: the listing below materializes matching document rows before
+// the in-memory visibility filter, so cap the read rather than loading the
+// whole documents table. Far beyond the real vault size; revisit with
+// pagination if the vault ever grows near it.
+export const ADMIN_DOCUMENT_LIST_LIMIT = 500;
+
 export async function listDocumentsForAdmin(scope: {
   role: StaffRole;
   staffId: string;
@@ -278,10 +284,13 @@ export async function listDocumentsForAdmin(scope: {
     );
 
   // Super admins need the unscoped query; scoped staff get the book predicate
-  // before ordering and materialization.
+  // before ordering and materialization. Both paths are capped (see above).
   const allDocs = documentScope
-    ? await documentQuery.where(documentScope).orderBy(desc(documents.createdAt))
-    : await documentQuery.orderBy(desc(documents.createdAt));
+    ? await documentQuery
+        .where(documentScope)
+        .orderBy(desc(documents.createdAt))
+        .limit(ADMIN_DOCUMENT_LIST_LIMIT)
+    : await documentQuery.orderBy(desc(documents.createdAt)).limit(ADMIN_DOCUMENT_LIST_LIMIT);
 
   const holdingIds = [
     ...new Set(

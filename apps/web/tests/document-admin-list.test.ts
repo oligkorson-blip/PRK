@@ -37,11 +37,12 @@ import { listDocumentsForAdmin } from "@/lib/documents/queries";
 
 const selectMock = db.select as unknown as ReturnType<typeof vi.fn>;
 
-/** Queue the vault listing chain (terminal `.orderBy()`). */
+/** Queue the vault listing chain (terminal `.limit()` after `.orderBy()`). */
 function mockDocsSelect(rows: unknown[]) {
-  const terminal = { orderBy: () => Promise.resolve(rows) };
+  const terminal = { orderBy: () => ({ limit: () => Promise.resolve(rows) }) };
   const where = () => terminal;
-  const fourthJoin = () => ({ where });
+  // The unscoped super-admin path calls `.orderBy()` straight after the joins.
+  const fourthJoin = () => ({ where, orderBy: terminal.orderBy });
   const thirdJoin = () => ({ leftJoin: fourthJoin });
   const secondJoin = () => ({ leftJoin: thirdJoin });
   const firstJoin = () => ({ leftJoin: secondJoin });
@@ -133,5 +134,21 @@ describe("listDocumentsForAdmin", () => {
     const rows = await listDocumentsForAdmin({ role: "agent", staffId: "agent-1" });
 
     expect(rows).toEqual([]);
+  });
+
+  it("gives super admins the unscoped (still capped) listing", async () => {
+    mockDocsSelect([
+      {
+        doc: { ...DOC_COLUMNS, id: "d-plat", ownerType: "platform", ownerId: null },
+        uploaderEmail: "ops@example.com"
+      }
+    ]);
+
+    const rows = await listDocumentsForAdmin({ role: "super_admin", staffId: "sa-1" });
+
+    expect(rows.map((r) => r.id)).toEqual(["d-plat"]);
+    expect(rows[0]?.uploaderEmail).toBe("ops@example.com");
+    // Platform doc with no owner: no enrichment batch queries run.
+    expect(selectMock).toHaveBeenCalledTimes(1);
   });
 });

@@ -397,13 +397,21 @@ export async function confirmInterest(input: {
         error: "The investor is no longer eligible for confirmation. Refresh and try again."
       };
     }
-    await db.insert(auditEvents).values({
-      actorUserId,
-      action: "interest.confirm_holding_failed",
-      entityType: "interest",
-      entityId: interest.id,
-      payload: { message: error instanceof Error ? error.message : String(error) }
-    });
+    // Best-effort failure audit: the confirmation already failed, so a
+    // secondary failure writing the audit row must not turn this clean
+    // { ok: false } return into a raw throw. Log the gap instead — the
+    // original error is surfaced to the admin below.
+    try {
+      await db.insert(auditEvents).values({
+        actorUserId,
+        action: "interest.confirm_holding_failed",
+        entityType: "interest",
+        entityId: interest.id,
+        payload: { message: error instanceof Error ? error.message : String(error) }
+      });
+    } catch (auditError) {
+      console.error("[interest:confirm_holding_failed audit]", auditError);
+    }
     return {
       ok: false,
       error: "Confirming the interest and creating the holding failed. Please check the audit log."
@@ -425,7 +433,10 @@ export async function confirmInterest(input: {
 
 export async function declineInterest(input: {
   interestId: string;
+  /** Internal decision note — stored on the interest and in the audit log, never sent to the investor. */
   adminNote?: string | null;
+  /** Optional message quoted verbatim in the decline email to the investor. */
+  investorMessage?: string | null;
 }): Promise<AdminInterestActionResult> {
   const admin = await requireAdmin();
   const actorUserId = admin.id;
@@ -448,6 +459,12 @@ export async function declineInterest(input: {
   const noteResult = validateInterestNote(input.adminNote);
   if (!noteResult.ok) {
     return { ok: false, error: noteResult.error };
+  }
+  // The investor-facing message is validated separately from the internal
+  // note: only this field is ever interpolated into the decline email.
+  const messageResult = validateInterestNote(input.investorMessage);
+  if (!messageResult.ok) {
+    return { ok: false, error: `Message to the investor: ${messageResult.error}` };
   }
   const now = new Date();
 
@@ -498,7 +515,12 @@ export async function declineInterest(input: {
       action: "interest.declined",
       entityType: "interest",
       entityId: interest.id,
-      payload: { assetSlug: asset.slug, amountEur: interest.amountEur, adminNote: noteResult.note }
+      payload: {
+        assetSlug: asset.slug,
+        amountEur: interest.amountEur,
+        adminNote: noteResult.note,
+        investorMessage: messageResult.note
+      }
     });
 
       return true;
@@ -525,8 +547,10 @@ export async function declineInterest(input: {
     await sendTransactionalEmail({
       to: investor.email,
       subject: `Update on your interest in ${asset.name}`,
+      // Only the dedicated investor-facing message is quoted here — the
+      // internal admin note stays on the record and in the audit log.
       text: `We couldn't confirm your interest of ${formatEur(interest.amountEur)} in ${asset.name} this time.${
-        noteResult.note ? ` Note from the team: ${noteResult.note}` : ""
+        messageResult.note ? ` Message from the team: ${messageResult.note}` : ""
       } Questions? Just reply to this email.`,
       ...(opsInbox ? { replyTo: opsInbox } : {})
     });

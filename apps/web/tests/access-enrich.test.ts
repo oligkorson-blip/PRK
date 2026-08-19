@@ -62,13 +62,13 @@ describe("enrichIp", () => {
     const fetchImpl = vi.fn(async () =>
       new Response(
         JSON.stringify({
-          ip: "203.0.113.10",
+          ip: "8.8.8.8",
           privacy: { vpn: true, proxy: false, hosting: false },
         }),
         { status: 200 }
       )
     );
-    const result = await enrichIp("203.0.113.10", { fetchImpl, timeoutMs: 500 });
+    const result = await enrichIp("8.8.8.8", { fetchImpl, timeoutMs: 500 });
     expect(result.source).toBe("api");
     expect(result.isVpn).toBe(true);
     expect(result.status).toBe("partial");
@@ -89,7 +89,7 @@ describe("enrichIp", () => {
         { status: 200 }
       )
     );
-    const result = await enrichIp("203.0.113.10", { fetchImpl, timeoutMs: 500 });
+    const result = await enrichIp("8.8.8.8", { fetchImpl, timeoutMs: 500 });
     expect(result.source).toBe("api");
     expect(result.city).toBe("Berlin");
     expect(result.status).toBe("ok");

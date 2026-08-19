@@ -8,7 +8,14 @@ import { auth } from "@/lib/auth/auth";
 export const getSessionUser = cache(async () => {
   const session = await auth.api.getSession({ headers: await headers() });
   if (!session?.user?.id || !session.user.email) return null;
-  return { id: session.user.id, email: session.user.email };
+  // emailVerified rides along so the unclaimed-investor claim path
+  // (lib/auth/investor.ts) can refuse to attach KYC/holdings data to an
+  // unverified address when email verification is switched on.
+  return {
+    id: session.user.id,
+    email: session.user.email,
+    emailVerified: session.user.emailVerified === true
+  };
 });
 
 export async function requireSessionUser() {

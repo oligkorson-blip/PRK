@@ -37,7 +37,7 @@ describe("listOwnAccessEvents", () => {
   });
 
   it("queries access events for the signed-in user, newest first, capped", async () => {
-    vi.mocked(requireSessionUser).mockResolvedValue({ id: "u1", email: "a@b.c" });
+    vi.mocked(requireSessionUser).mockResolvedValue({ id: "u1", email: "a@b.c", emailVerified: true });
     limitMock.mockResolvedValue([{ id: "ev1" }]);
 
     const events = await listOwnAccessEvents();
@@ -49,7 +49,7 @@ describe("listOwnAccessEvents", () => {
   });
 
   it("honours an explicit limit", async () => {
-    vi.mocked(requireSessionUser).mockResolvedValue({ id: "u1", email: "a@b.c" });
+    vi.mocked(requireSessionUser).mockResolvedValue({ id: "u1", email: "a@b.c", emailVerified: true });
     limitMock.mockResolvedValue([]);
 
     await listOwnAccessEvents(3);
