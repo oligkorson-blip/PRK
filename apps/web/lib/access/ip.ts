@@ -58,6 +58,10 @@ export function isPrivateIp(ip: string): boolean {
     if ((hextets[0] & 0xfe00) === 0xfc00) return true;
     // Link-local fe80::/10 (fe80–febf, not just the fe80 prefix).
     if ((hextets[0] & 0xffc0) === 0xfe80) return true;
+    // Multicast ff00::/8.
+    if ((hextets[0] & 0xff00) === 0xff00) return true;
+    // Documentation 2001:db8::/32 (RFC 3849) — never globally routable.
+    if (hextets[0] === 0x2001 && hextets[1] === 0x0db8) return true;
     return false;
   }
 
@@ -84,8 +88,15 @@ export function isPrivateIp(ip: string): boolean {
   if (addr.startsWith("169.254.")) return true;
   // CGNAT 100.64.0.0/10 (100.64–100.127).
   if (/^100\.(6[4-9]|[7-9]\d|1[01]\d|12[0-7])\./.test(addr)) return true;
+  // IETF protocol assignments 192.0.0.0/24 (RFC 6890) and the documentation
+  // TEST-NET ranges 192.0.2.0/24, 198.51.100.0/24, 203.0.113.0/24 (RFC 5737)
+  // are never globally routable.
+  if (addr.startsWith("192.0.0.") || addr.startsWith("192.0.2.")) return true;
+  if (addr.startsWith("198.51.100.") || addr.startsWith("203.0.113.")) return true;
   // Benchmarking 198.18.0.0/15.
   if (/^198\.(18|19)\./.test(addr)) return true;
+  // Multicast 224.0.0.0/4 (224–239).
+  if (/^2(2[4-9]|3\d)\./.test(addr)) return true;
   // Reserved 240.0.0.0/4 (includes 255.255.255.255).
   if (/^(24\d|25[0-5])\./.test(addr)) return true;
   return false;
