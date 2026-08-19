@@ -1,0 +1,135 @@
+name: web-ci
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/web/**"
+      - ".github/workflows/web-ci.yml"
+  pull_request:
+    paths:
+      - "apps/web/**"
+      - ".github/workflows/web-ci.yml"
+
+defaults:
+  run:
+    working-directory: apps/web
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: parkwise
+          POSTGRES_PASSWORD: parkwise
+          POSTGRES_DB: parkwise
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U parkwise"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DATABASE_URL: postgresql://parkwise:parkwise@localhost:5432/parkwise
+      DOCUMENTS_DIR: /tmp/parkwise-ci-documents
+      DEMO_MODE: "true"
+      # Throwaway CI-only value — the ephemeral runner database is destroyed
+      # with the job. Never reuse a real secret here.
+      BETTER_AUTH_SECRET: ci-only-throwaway-secret-not-for-production
+      BETTER_AUTH_URL: http://localhost:3000
+      NEXT_PUBLIC_APP_URL: http://localhost:3000
+      SUPER_ADMIN_EMAILS: ops@parkwise.eu
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+      - run: npm ci --legacy-peer-deps
+      - run: npx drizzle-kit migrate
+      - run: npx tsc --noEmit
+      - run: npx vitest run
+      - run: npm run build
+
+  integration:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: parkwise
+          POSTGRES_PASSWORD: parkwise
+          POSTGRES_DB: parkwise
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U parkwise"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      # The integration suite builds its own parkwise_it_* scratch databases
+      # on this server and runs migrations inside them.
+      PARKWISE_TEST_DATABASE_URL: postgresql://parkwise:parkwise@localhost:5432/postgres
+      DATABASE_URL: postgresql://parkwise:parkwise@localhost:5432/parkwise
+      DOCUMENTS_DIR: /tmp/parkwise-ci-documents
+      DEMO_MODE: "true"
+      BETTER_AUTH_SECRET: ci-only-throwaway-secret-not-for-production
+      BETTER_AUTH_URL: http://localhost:3000
+      NEXT_PUBLIC_APP_URL: http://localhost:3000
+      SUPER_ADMIN_EMAILS: ops@parkwise.eu
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+      - run: npm ci --legacy-peer-deps
+      - run: npx drizzle-kit migrate
+      - run: npm run test:integration
+
+  e2e:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: parkwise
+          POSTGRES_PASSWORD: parkwise
+          POSTGRES_DB: parkwise
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U parkwise"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DATABASE_URL: postgresql://parkwise:parkwise@localhost:5432/parkwise
+      DOCUMENTS_DIR: /tmp/parkwise-ci-documents
+      DEMO_MODE: "true"
+      BETTER_AUTH_SECRET: ci-only-throwaway-secret-not-for-production
+      BETTER_AUTH_URL: http://127.0.0.1:3000
+      NEXT_PUBLIC_APP_URL: http://127.0.0.1:3000
+      SUPER_ADMIN_EMAILS: ops@parkwise.eu
+      # Test credential for the ephemeral CI database only; the fallback keeps
+      # forks/PRs green without a repo secret. Never a real password.
+      TEST_USER_PASSWORD: ${{ secrets.E2E_TEST_USER_PASSWORD || 'ci-e2e-throwaway-not-a-real-credential' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+      - run: npm ci --legacy-peer-deps
+      - run: npx drizzle-kit migrate
+      - run: npm run db:seed
+      - run: npx tsx scripts/create-test-users.ts
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
