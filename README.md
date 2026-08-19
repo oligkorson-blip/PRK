@@ -50,6 +50,7 @@ export BETTER_AUTH_SECRET="$(openssl rand -base64 32)"
 export SUPER_ADMIN_EMAILS="ops@example.com"
 export BETTER_AUTH_URL="http://localhost:3000"
 export NEXT_PUBLIC_APP_URL="http://localhost:3000"
+export POSTGRES_PASSWORD="$(openssl rand -hex 24)"   # required — no default in the production compose file
 docker compose up -d --build
 docker compose exec web npm run db:migrate
 docker compose exec web npm run db:seed
