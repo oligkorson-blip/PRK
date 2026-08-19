@@ -1,0 +1,13 @@
+---
+description: Consumer copy voice for public/investor-facing UI (mirrored from AGENTS.md)
+globs: apps/web/app/**, apps/web/components/**, apps/web/lib/copy/**
+alwaysApply: false
+---
+
+# Consumer copy voice
+
+- Public/investor-facing UI: short plain English, benefit + concrete CTA, calm adult tone.
+- Never say "hubs" in consumer copy — use "opportunities"/"places"/"locations".
+- No advisory language ("recommended for you", "safer", "lower risk").
+- Keep illustrative / capital-at-risk disclaimers on yield/income surfaces — never remove them.
+- Admin/ops/staff UI may stay precise and operational.
