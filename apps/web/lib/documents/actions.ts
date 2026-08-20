@@ -10,6 +10,7 @@ import { loadHoldingOwner } from "@/lib/documents/queries";
 import { isUuid } from "@/lib/format";
 import { buildObjectKey, deleteObject, isStorageConfigured, putObject } from "@/lib/storage/local";
 import { sniffMatchesType } from "@/lib/storage/sniff";
+import { ERROR_UPLOAD_STORAGE } from "@/lib/copy/errors";
 
 const MAX_BYTES = 15 * 1024 * 1024;
 
@@ -157,7 +158,7 @@ export async function adminUploadDocument(formData: FormData): Promise<
     await putObject(storageKey, buffer, "application/pdf");
   } catch (err) {
     console.error("[storage:put]", err);
-    return { ok: false, error: "Upload to storage failed." };
+    return { ok: false, error: ERROR_UPLOAD_STORAGE };
   }
 
   let created: typeof documents.$inferSelect;

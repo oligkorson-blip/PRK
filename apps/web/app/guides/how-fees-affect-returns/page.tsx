@@ -6,12 +6,14 @@ import { articleJsonLd } from "@/lib/guides/article-jsonld";
 import { getGuideOrNotFound } from "@/lib/guides/catalog";
 import { NO_PLATFORM_FEE_LINE, RISK_LINE } from "@/lib/copy/consumer";
 import { formatDateDdMmYyyy } from "@/lib/format";
+import { GUIDE_COPY } from "@/lib/guides/copy";
 
 const GUIDE = getGuideOrNotFound("how-fees-affect-returns");
+const COPY = GUIDE_COPY["how-fees-affect-returns"];
 
 export const metadata: Metadata = {
   title: "How fees affect returns",
-  description: "How fees can affect target returns on Parkwise opportunities."
+  description: COPY.description
 };
 
 export default function FeesAffectReturnsGuidePage() {
@@ -23,10 +25,7 @@ export default function FeesAffectReturnsGuidePage() {
           <GuideBreadcrumb />
           <span className="kicker">Fees</span>
           <h1 className="display-l">How fees affect returns</h1>
-          <p className="lead">
-            Fees reduce the amount available for distributions. Any fees that apply to an
-            opportunity are set out in its documents before you confirm an investment.
-          </p>
+          <p className="lead">{COPY.lead}</p>
           <p className="field-hint stack-3">
             {GUIDE.minutes} min read · Last reviewed {formatDateDdMmYyyy(GUIDE.reviewedAt)}
           </p>

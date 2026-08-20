@@ -6,13 +6,14 @@ import { articleJsonLd } from "@/lib/guides/article-jsonld";
 import { getGuideOrNotFound } from "@/lib/guides/catalog";
 import { RISK_LINE } from "@/lib/copy/consumer";
 import { formatDateDdMmYyyy } from "@/lib/format";
+import { GUIDE_COPY } from "@/lib/guides/copy";
 
 const GUIDE = getGuideOrNotFound("parking-investment-risks");
+const COPY = GUIDE_COPY["parking-investment-risks"];
 
 export const metadata: Metadata = {
   title: "The main risks of parking investments",
-  description:
-    "Income, capital, liquidity, and market risks of parking investments on Parkwise."
+  description: COPY.description
 };
 
 export default function ParkingRisksGuidePage() {
@@ -24,9 +25,7 @@ export default function ParkingRisksGuidePage() {
           <GuideBreadcrumb />
           <span className="kicker">Risks</span>
           <h1 className="display-l">The main risks of parking investments</h1>
-          <p className="lead">
-            Parking can be a clear, real-world asset. It is still an investment that can lose money.
-          </p>
+          <p className="lead">{COPY.lead}</p>
           <p className="field-hint stack-3">
             {GUIDE.minutes} min read · Last reviewed {formatDateDdMmYyyy(GUIDE.reviewedAt)}
           </p>

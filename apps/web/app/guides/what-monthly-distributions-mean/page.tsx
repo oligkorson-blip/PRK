@@ -6,13 +6,14 @@ import { articleJsonLd } from "@/lib/guides/article-jsonld";
 import { getGuideOrNotFound } from "@/lib/guides/catalog";
 import { RISK_LINE } from "@/lib/copy/consumer";
 import { formatDateDdMmYyyy } from "@/lib/format";
+import { GUIDE_COPY } from "@/lib/guides/copy";
 
 const GUIDE = getGuideOrNotFound("what-monthly-distributions-mean");
+const COPY = GUIDE_COPY["what-monthly-distributions-mean"];
 
 export const metadata: Metadata = {
   title: "What monthly distributions actually mean",
-  description:
-    "Understand target monthly income on Parkwise opportunities, and why distributions are never guaranteed."
+  description: COPY.description
 };
 
 export default function MonthlyDistributionsGuidePage() {
@@ -24,10 +25,7 @@ export default function MonthlyDistributionsGuidePage() {
           <GuideBreadcrumb />
           <span className="kicker">Understanding returns</span>
           <h1 className="display-l">What monthly distributions actually mean</h1>
-          <p className="lead">
-            Opportunity pages often show an illustrative monthly income figure. Here is what that
-            number is, and what it is not.
-          </p>
+          <p className="lead">{COPY.lead}</p>
           <p className="field-hint stack-3">
             {GUIDE.minutes} min read · Last reviewed {formatDateDdMmYyyy(GUIDE.reviewedAt)}
           </p>

@@ -2,12 +2,12 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { GuideDisclaimer } from "@/components/guide-chrome";
 import { GUIDE_CATEGORIES, GUIDES } from "@/lib/guides/catalog";
+import { GUIDES_INDEX_COPY } from "@/lib/guides/copy";
 import { RISK_LINE } from "@/lib/copy/consumer";
 
 export const metadata: Metadata = {
   title: "Guides",
-  description:
-    "Understand parking investments before you invest. Guides on returns, risks, fees, and how to read an opportunity."
+  description: GUIDES_INDEX_COPY.metaDescription
 };
 
 export default function GuidesIndexPage() {
@@ -15,11 +15,9 @@ export default function GuidesIndexPage() {
     <main>
       <section className="page-hero">
         <div className="container">
-          <span className="kicker">Guides</span>
-          <h1 className="display-l">Understand the opportunity before you invest</h1>
-          <p className="lead">
-            Plain-language guides on returns, risks, fees, and how parking investments work.
-          </p>
+          <span className="kicker">{GUIDES_INDEX_COPY.kicker}</span>
+          <h1 className="display-l">{GUIDES_INDEX_COPY.title}</h1>
+          <p className="lead">{GUIDES_INDEX_COPY.lead}</p>
           <p className="field-hint stack-3">
             {RISK_LINE} <Link href="/legal/risk">Read the risk disclosure</Link>.
           </p>

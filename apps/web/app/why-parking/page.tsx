@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { PageIntro } from "@/components/page-intro";
+import { WHY_PARKING } from "@/lib/copy/consumer";
 
 export const metadata: Metadata = {
   title: "Why parking",
@@ -8,39 +9,25 @@ export const metadata: Metadata = {
     "An everyday need and a potential source of recurring income. Understand parking demand, EV charging, and the risks."
 };
 
-const DEMAND = [
-  { title: "Commuters", body: "Weekday demand near offices and transport links." },
-  { title: "Residents", body: "Overnight and local parking where housing is dense." },
-  { title: "Airports", body: "Travel patterns that can support longer stays." },
-  { title: "Hospitals", body: "Steady visitor and staff parking needs." },
-  { title: "Retail and leisure", body: "Shoppers, diners, and evening visitors." },
-  { title: "Events and tourism", body: "Peaks around venues, seasons, and city visitors." },
-  { title: "EV charging", body: "Charging can add services where the site supports it." },
-  { title: "Limited local supply", body: "Scarce nearby alternatives can support use." }
-] as const;
-
 export default function WhyParkingPage() {
   return (
     <main>
       <PageIntro
         variant="editorial"
-        kicker="Why parking"
-        title="An everyday service in the places people keep moving through."
-        lead="Stations, airports, hospitals, shopping districts, and city centres all depend on well-located access. Parking is not glamorous. Its role in daily movement is exactly what makes it worth understanding."
+        kicker={WHY_PARKING.intro.kicker}
+        title={WHY_PARKING.intro.title}
+        lead={WHY_PARKING.intro.lead}
       />
 
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <span className="kicker">Demand</span>
-            <h2 className="display-m">Who needs parking, day after day</h2>
-            <p className="lead">
-              Parking demand comes from ordinary, repeatable behaviour — not speculation. Here are the
-              groups that keep well-located sites in use.
-            </p>
+            <span className="kicker">{WHY_PARKING.demand.kicker}</span>
+            <h2 className="display-m">{WHY_PARKING.demand.title}</h2>
+            <p className="lead">{WHY_PARKING.demand.lead}</p>
           </div>
           <ul className="demand-list stack-7">
-            {DEMAND.map((item) => (
+            {WHY_PARKING.demand.items.map((item) => (
               <li key={item.title}>
                 <strong>{item.title}</strong>
                 <p>{item.body}</p>
@@ -64,15 +51,11 @@ export default function WhyParkingPage() {
               />
             </div>
             <div className="split-copy">
-              <span className="kicker">Mobility services</span>
-              <h2 className="display-m">Parking can also support charging</h2>
-              <p className="lead">
-                Where a site allows it, EV charging and related services may add revenue alongside
-                core parking income. That does not mean every opportunity will earn more, and it does
-                not guarantee higher investor returns.
-              </p>
+              <span className="kicker">{WHY_PARKING.mobility.kicker}</span>
+              <h2 className="display-m">{WHY_PARKING.mobility.title}</h2>
+              <p className="lead">{WHY_PARKING.mobility.lead}</p>
               <Link className="link-arrow" href="/guides">
-                Read the guides →
+                {WHY_PARKING.mobility.linkLabel}
               </Link>
             </div>
           </div>
@@ -82,18 +65,17 @@ export default function WhyParkingPage() {
       <section className="section">
         <div className="container risk-panel">
           <div className="section-head">
-            <span className="kicker">Balance the case</span>
-            <h2 className="display-m">Not every parking asset performs the same</h2>
+            <span className="kicker">{WHY_PARKING.risk.kicker}</span>
+            <h2 className="display-m">{WHY_PARKING.risk.title}</h2>
           </div>
           <ul className="risk-list">
-            <li>Local competition, pricing rules, and access can change how busy sites are.</li>
-            <li>Operating costs, maintenance, and vacancies affect available income.</li>
-            <li>Policy changes around cars and streets can reshape demand over time.</li>
-            <li>Target returns can miss. Capital can be lost.</li>
+            {WHY_PARKING.risk.items.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
           </ul>
           <p className="stack-7">
-            <Link className="link-arrow" href="/legal/risk">
-              Read the full risk disclosure →
+            <Link className="link-arrow" href={WHY_PARKING.risk.linkHref}>
+              {WHY_PARKING.risk.linkLabel}
             </Link>
           </p>
         </div>
@@ -103,10 +85,8 @@ export default function WhyParkingPage() {
         <div className="container">
           <div className="cta-grid">
             <div>
-              <h2 className="display-m">See open parking opportunities</h2>
-              <p className="lead cta-lead">
-                Compare locations and terms before you invest.
-              </p>
+              <h2 className="display-m">{WHY_PARKING.cta.title}</h2>
+              <p className="lead cta-lead">{WHY_PARKING.cta.lead}</p>
               <div className="apply-actions">
                 <Link className="btn btn-white" href="/apply">
                   Request access <span className="arrow">→</span>

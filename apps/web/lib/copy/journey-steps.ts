@@ -29,6 +29,37 @@ export const JOURNEY_STEPS = [
 
 export type JourneyStep = (typeof JOURNEY_STEPS)[number];
 
+/** How-it-works page intro — the promise the four steps then keep. */
+export const HOW_IT_WORKS_INTRO = {
+  kicker: "How Parkwise works",
+  title: "From first look to a clearer decision.",
+  lead:
+    "Apply first, then take your time. When an opportunity feels relevant, the documents, identity checks, team support, and your portfolio view all sit on one straightforward path.",
+  primaryLabel: "Request an invitation",
+  primaryHref: "/apply",
+  secondaryLabel: "Explore opportunities",
+  secondaryHref: "/opportunities"
+} as const;
+
+/** How-it-works closing note — what applying does and does not do. */
+export const AFTER_YOU_APPLY = {
+  title: "After you apply",
+  lead:
+    "Applying does not commit or invest any money. The team reviews your request and replies with clear next steps — usually within three business days. You can keep browsing while you wait.",
+  linkLabel: "Read the FAQ →",
+  linkHref: "/faq"
+} as const;
+
+/** Signed-in members section — the catalogue behind the login. */
+export const MEMBERS_SECTION = {
+  kicker: "Inside your membership",
+  title: "Review each opportunity at your own pace",
+  lead:
+    "Once signed in, you can open the private catalogue and see the figures, documents, and terms available for each location.",
+  ctaLabel: "Explore opportunities",
+  ctaHref: "/opportunities"
+} as const;
+
 /**
  * “What you get” portal preview — How it works, below the journey steps.
  * Shows what membership actually contains; keep free of advisory language.

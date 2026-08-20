@@ -5,13 +5,14 @@ import { GuideBreadcrumb, RelatedGuides } from "@/components/guide-chrome";
 import { articleJsonLd } from "@/lib/guides/article-jsonld";
 import { getGuideOrNotFound } from "@/lib/guides/catalog";
 import { formatDateDdMmYyyy } from "@/lib/format";
+import { GUIDE_COPY } from "@/lib/guides/copy";
 
 const GUIDE = getGuideOrNotFound("how-hub-income-is-stacked");
+const COPY = GUIDE_COPY["how-hub-income-is-stacked"];
 
 export const metadata: Metadata = {
   title: "How parking investments generate income",
-  description:
-    "Parking, EV charging, and other income streams on Parkwise opportunities. Capital at risk."
+  description: COPY.description
 };
 
 export default function HubIncomeGuidePage() {
@@ -23,10 +24,7 @@ export default function HubIncomeGuidePage() {
           <GuideBreadcrumb />
           <span className="kicker">Understanding returns</span>
           <h1 className="display-l">How parking investments generate income</h1>
-          <p className="lead">
-            Parking is the primary stream. Everything else is additive only when it is written into
-            the opportunity terms.
-          </p>
+          <p className="lead">{COPY.lead}</p>
           <p className="field-hint stack-3">
             {GUIDE.minutes} min read · Last reviewed {formatDateDdMmYyyy(GUIDE.reviewedAt)}
           </p>

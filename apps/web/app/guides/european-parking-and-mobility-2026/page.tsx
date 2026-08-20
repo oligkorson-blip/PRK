@@ -6,13 +6,14 @@ import { GuideBreadcrumb, RelatedGuides } from "@/components/guide-chrome";
 import { articleJsonLd } from "@/lib/guides/article-jsonld";
 import { getGuideOrNotFound } from "@/lib/guides/catalog";
 import { formatDateDdMmYyyy } from "@/lib/format";
+import { GUIDE_COPY } from "@/lib/guides/copy";
 
 const GUIDE = getGuideOrNotFound("european-parking-and-mobility-2026");
+const COPY = GUIDE_COPY["european-parking-and-mobility-2026"];
 
 export const metadata: Metadata = {
   title: "European parking and mobility in 2026",
-  description:
-    "Public figures on European cars, charging, and AFIR — and how Parkwise parking opportunities fit. Capital at risk."
+  description: COPY.description
 };
 
 export default function FlagshipGuidePage() {
@@ -24,10 +25,7 @@ export default function FlagshipGuidePage() {
           <GuideBreadcrumb />
           <span className="kicker">Parking and mobility</span>
           <h1 className="display-l">European parking and mobility in 2026</h1>
-          <p className="lead">
-            Cars still fill European cities. Charging infrastructure is expanding under hard EU rules.
-            Destination parking sits where those two facts meet.
-          </p>
+          <p className="lead">{COPY.lead}</p>
           <p className="field-hint stack-3">
             {GUIDE.minutes} min read · Last reviewed {formatDateDdMmYyyy(GUIDE.reviewedAt)}
           </p>

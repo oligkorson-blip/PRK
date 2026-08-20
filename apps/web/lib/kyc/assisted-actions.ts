@@ -7,6 +7,7 @@ import { investorVisibleToStaff } from "@/lib/auth/staff";
 import { auditEvents, db, documents, investors } from "@/lib/db";
 import { buildObjectKey, deleteObject, isStorageConfigured, putObject } from "@/lib/storage/local";
 import { sniffMatchesType } from "@/lib/storage/sniff";
+import { ERROR_UPLOAD_STORAGE } from "@/lib/copy/errors";
 
 // Mirrors the investor pipeline in ./actions. Duplicated (not exported there)
 // because "use server" modules may only export async functions.
@@ -95,7 +96,7 @@ export async function assistedKycUpload(
     await putObject(storageKey, buffer, file.type);
   } catch (err) {
     console.error("[storage:put]", err);
-    return { ok: false, error: "Upload to storage failed." };
+    return { ok: false, error: ERROR_UPLOAD_STORAGE };
   }
 
   try {

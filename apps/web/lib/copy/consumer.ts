@@ -296,6 +296,23 @@ export const WHY_PARKING = {
   }
 } as const;
 
+/** Contact page — set the expectation for what happens after someone writes in. */
+export const CONTACT = {
+  kicker: "Contact",
+  title: "Talk to the team",
+  lead:
+    "Questions about an opportunity, your account, documents, or listing a parking space? Write to us — a person reads every message and replies by email, usually within one business day.",
+  emailLabel: "Email",
+  phoneLabel: "Phone",
+  phoneHours: "Mon–Fri, 9:00–18:00 CET",
+  listSpaceLabel: "List a parking space",
+  listSpaceLinkLabel: "Send your space details →",
+  complaintsLabel: "Complaints",
+  complaintsBody:
+    "If something has gone wrong, we want to hear it directly. The complaints process explains what to send and how we respond.",
+  complaintsLinkLabel: "Read the complaints process →"
+} as const;
+
 export const PORTAL_WITHDRAWAL_UNAVAILABLE =
   "Withdrawals are currently unavailable for this account. Talk to the team if you have questions.";
 

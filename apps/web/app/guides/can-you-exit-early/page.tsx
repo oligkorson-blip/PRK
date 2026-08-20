@@ -6,12 +6,14 @@ import { articleJsonLd } from "@/lib/guides/article-jsonld";
 import { getGuideOrNotFound } from "@/lib/guides/catalog";
 import { RISK_LINE } from "@/lib/copy/consumer";
 import { formatDateDdMmYyyy } from "@/lib/format";
+import { GUIDE_COPY } from "@/lib/guides/copy";
 
 const GUIDE = getGuideOrNotFound("can-you-exit-early");
+const COPY = GUIDE_COPY["can-you-exit-early"];
 
 export const metadata: Metadata = {
   title: "Can you exit early?",
-  description: "How liquidity works for Parkwise parking investments and what early exit usually means."
+  description: COPY.description
 };
 
 export default function ExitEarlyGuidePage() {
@@ -23,10 +25,7 @@ export default function ExitEarlyGuidePage() {
           <GuideBreadcrumb />
           <span className="kicker">Investment terms</span>
           <h1 className="display-l">Can you exit early?</h1>
-          <p className="lead">
-            Most parking investments are designed to be held for a stated term. Early exit is not
-            guaranteed.
-          </p>
+          <p className="lead">{COPY.lead}</p>
           <p className="field-hint stack-3">
             {GUIDE.minutes} min read · Last reviewed {formatDateDdMmYyyy(GUIDE.reviewedAt)}
           </p>

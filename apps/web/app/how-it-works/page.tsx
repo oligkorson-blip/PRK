@@ -1,7 +1,13 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { PageIntro } from "@/components/page-intro";
-import { JOURNEY_STEPS } from "@/lib/copy/journey-steps";
+import {
+  AFTER_YOU_APPLY,
+  HOW_IT_WORKS_INTRO,
+  JOURNEY_STEPS,
+  MEMBERS_SECTION,
+  PORTAL_PREVIEW
+} from "@/lib/copy/journey-steps";
 import { RISK_LINE_SHORT } from "@/lib/copy/consumer";
 import { getSessionUser } from "@/lib/auth/session";
 
@@ -20,17 +26,17 @@ export default async function HowItWorksPage() {
     <main>
       <PageIntro
         variant="editorial"
-        kicker="How Parkwise works"
-        title="From first look to a clearer decision."
-        lead="Apply first, then take your time. When an opportunity feels relevant, Parkwise brings the documents, identity checks, team support, and portfolio view into one straightforward path."
+        kicker={HOW_IT_WORKS_INTRO.kicker}
+        title={HOW_IT_WORKS_INTRO.title}
+        lead={HOW_IT_WORKS_INTRO.lead}
       >
         <div className="hero-ctas stack-7">
-          <Link className="btn btn-white" href="/apply">
-            Request an invitation <span className="arrow">→</span>
+          <Link className="btn btn-white" href={HOW_IT_WORKS_INTRO.primaryHref}>
+            {HOW_IT_WORKS_INTRO.primaryLabel} <span className="arrow">→</span>
           </Link>
           {user ? (
-            <Link className="btn btn-ghost-light" href="/opportunities">
-              Explore opportunities <span className="arrow">→</span>
+            <Link className="btn btn-ghost-light" href={HOW_IT_WORKS_INTRO.secondaryHref}>
+              {HOW_IT_WORKS_INTRO.secondaryLabel} <span className="arrow">→</span>
             </Link>
           ) : null}
         </div>
@@ -50,20 +56,37 @@ export default async function HowItWorksPage() {
         </div>
       </section>
 
+      <section className="section bg-cream" aria-labelledby="portal-preview-heading">
+        <div className="container">
+          <div className="section-head">
+            <span className="kicker">{PORTAL_PREVIEW.kicker}</span>
+            <h2 id="portal-preview-heading" className="display-m">
+              {PORTAL_PREVIEW.title}
+            </h2>
+            <p className="lead">{PORTAL_PREVIEW.lead}</p>
+          </div>
+          <div className="grid-2">
+            {PORTAL_PREVIEW.points.map((point) => (
+              <article className="info-card" key={point.title}>
+                <h3>{point.title}</h3>
+                <p>{point.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {user ? (
-        <section className="section bg-cream">
+        <section className="section">
           <div className="container container-narrow">
             <div className="section-head center">
-              <span className="kicker">Inside your membership</span>
-              <h2 className="display-m">Review each opportunity at your own pace</h2>
-              <p className="lead">
-                Once signed in, you can open the private catalogue and see the figures, documents,
-                and terms available for each location.
-              </p>
+              <span className="kicker">{MEMBERS_SECTION.kicker}</span>
+              <h2 className="display-m">{MEMBERS_SECTION.title}</h2>
+              <p className="lead">{MEMBERS_SECTION.lead}</p>
             </div>
             <p className="text-center">
-              <Link className="btn btn-primary" href="/opportunities">
-                Explore opportunities <span className="arrow">→</span>
+              <Link className="btn btn-primary" href={MEMBERS_SECTION.ctaHref}>
+                {MEMBERS_SECTION.ctaLabel} <span className="arrow">→</span>
               </Link>
             </p>
             <p className="field-hint stack-6 text-center">{RISK_LINE_SHORT}</p>
@@ -73,14 +96,11 @@ export default async function HowItWorksPage() {
 
       <section className="section">
         <div className="container container-narrow">
-          <h2 className="h3">After you apply</h2>
-          <p className="lead">
-            Applying does not commit or invest any money. The team reviews your request and replies
-            with clear next steps. You can keep browsing while you wait.
-          </p>
+          <h2 className="h3">{AFTER_YOU_APPLY.title}</h2>
+          <p className="lead">{AFTER_YOU_APPLY.lead}</p>
           <p>
-            <Link className="link-arrow" href="/faq">
-              Read the FAQ →
+            <Link className="link-arrow" href={AFTER_YOU_APPLY.linkHref}>
+              {AFTER_YOU_APPLY.linkLabel}
             </Link>
           </p>
         </div>

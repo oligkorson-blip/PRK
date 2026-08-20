@@ -6,13 +6,14 @@ import { articleJsonLd } from "@/lib/guides/article-jsonld";
 import { getGuideOrNotFound } from "@/lib/guides/catalog";
 import { RISK_LINE } from "@/lib/copy/consumer";
 import { formatDateDdMmYyyy } from "@/lib/format";
+import { GUIDE_COPY } from "@/lib/guides/copy";
 
 const GUIDE = getGuideOrNotFound("how-to-read-a-parkwise-opportunity");
+const COPY = GUIDE_COPY["how-to-read-a-parkwise-opportunity"];
 
 export const metadata: Metadata = {
   title: "How to read a Parkwise opportunity",
-  description:
-    "A plain-language map of labels on Parkwise opportunity cards and detail pages."
+  description: COPY.description
 };
 
 export default function ReadOpportunityGuidePage() {
@@ -24,7 +25,7 @@ export default function ReadOpportunityGuidePage() {
           <GuideBreadcrumb />
           <span className="kicker">Getting started</span>
           <h1 className="display-l">How to read a Parkwise opportunity</h1>
-          <p className="lead">A short map of the labels on cards and detail pages.</p>
+          <p className="lead">{COPY.lead}</p>
           <p className="field-hint stack-3">
             {GUIDE.minutes} min read · Last reviewed {formatDateDdMmYyyy(GUIDE.reviewedAt)}
           </p>

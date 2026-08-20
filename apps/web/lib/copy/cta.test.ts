@@ -175,10 +175,10 @@ describe("JOURNEY_STEPS", () => {
   it("exposes four plain-language process steps", () => {
     expect(JOURNEY_STEPS).toHaveLength(4);
     expect(JOURNEY_STEPS.map((s) => s.title)).toEqual([
-      "Explore opportunities",
+      "See the place",
       "Request an invitation",
-      "Review and verify",
-      "Decide and follow"
+      "Get the documents",
+      "Decide, then follow along"
     ]);
   });
 });
