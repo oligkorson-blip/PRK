@@ -7,6 +7,7 @@ import { fundingForAssets } from "@/lib/assets/funding";
 import { isCommunitySpacesEnabled } from "@/lib/platform-settings/queries";
 import { getSessionUser } from "@/lib/auth/session";
 import { ACCESS_STEPS } from "@/lib/copy/access-steps";
+import { HOME_CTA } from "@/lib/copy/home-cta";
 import {
   CAMPAIGN_HEADLINE,
   CAMPAIGN_KICKER,
@@ -368,19 +369,18 @@ export default async function HomePage() {
       <section className="home-cta section-enter" aria-labelledby="home-cta-heading">
         <div className="container home-cta-grid">
           <div>
-            <h2 id="home-cta-heading" className="home-cta-title">Ready to look a little closer?</h2>
+            <h2 id="home-cta-heading" className="home-cta-title">{HOME_CTA.title}</h2>
             <p className="lead cta-lead home-cta-lead">
-              Browse at your own pace. Request an invitation when you want the documents and a
-              conversation with the team.
+              {HOME_CTA.lead}
             </p>
             <div className="apply-actions home-cta-actions">
               {user ? (
                 <Link className="btn btn-white" href="/opportunities">
-                  Browse opportunities <span className="arrow">→</span>
+                  {HOME_CTA.browseLabel} <span className="arrow">→</span>
                 </Link>
               ) : (
                 <Link className="btn btn-white" href="/sign-in">
-                  Sign in to browse <span className="arrow">→</span>
+                  {HOME_CTA.signInLabel} <span className="arrow">→</span>
                 </Link>
               )}
               <Link className="btn btn-ghost-light" href="/apply">

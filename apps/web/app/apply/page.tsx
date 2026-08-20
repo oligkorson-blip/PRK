@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ApplyWizard } from "@/components/apply-wizard";
 import type { Metadata } from "next";
-import { RISK_LINE } from "@/lib/copy/consumer";
+import { APPLY_INTRO, APPLY_TRUST_ITEMS, RISK_LINE } from "@/lib/copy/consumer";
 import { INVITE_SLA_COPY } from "@/lib/copy/posture";
 
 export const metadata: Metadata = {
@@ -41,20 +41,19 @@ export default async function ApplyPage({
         <div className="container">
           <div className="register-shell">
             <header className="apply-intro page-intro-task">
-              <span className="kicker">Your invitation request</span>
+              <span className="kicker">{APPLY_INTRO.kicker}</span>
               <h1 id="apply-heading" className="h2 page-intro-title">
-                Let&apos;s find out what fits.
+                {APPLY_INTRO.title}
               </h1>
               <p className="lead">
-                Tell us a little about yourself and the kind of opportunity you are considering.
-                There is no commitment, and you can keep browsing at any time.
+                {APPLY_INTRO.lead}
               </p>
               <p className="field-hint stack-3">{RISK_LINE}</p>
               {opportunityHref ? (
                 <p className="field-hint stack-3">
-                  Coming from an opportunity?{" "}
+                  {APPLY_INTRO.returnPrompt}{" "}
                   <Link className="link-arrow" href={opportunityHref}>
-                    Return to the opportunity page
+                    {APPLY_INTRO.returnLabel}
                   </Link>
                 </p>
               ) : null}

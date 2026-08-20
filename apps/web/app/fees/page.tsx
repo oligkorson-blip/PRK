@@ -3,8 +3,9 @@ import type { Metadata } from "next";
 import { PageIntro } from "@/components/page-intro";
 import {
   FEE_TERMINOLOGY_LINE,
-  NO_PLATFORM_FEE_LINE,
-  RISK_LINE
+  FEES_BENEFIT_LEAD,
+  FEES_CHECKLIST,
+  NO_PLATFORM_FEE_LINE
 } from "@/lib/copy/consumer";
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export default function FeesPage() {
         variant="functional"
         kicker="Fees"
         title="Fees, in plain terms"
-        lead={NO_PLATFORM_FEE_LINE}
+        lead={FEES_BENEFIT_LEAD}
       />
       <section className="section">
         <div className="container container-narrow">
@@ -27,15 +28,16 @@ export default function FeesPage() {
             <article className="info-card">
               <h3>Platform fee</h3>
               <p>
-                Parkwise does not charge a platform fee today. This does not mean that an underlying
-                opportunity has no costs.
+                Parkwise does not charge you a platform fee today. That is not the same as no costs
+                at all — any costs sit with the individual opportunity.
               </p>
             </article>
             <article className="info-card">
               <h3>Opportunity fees and costs</h3>
               <p>
-                The amount, type, payer, timing, and effect of any structuring, administration,
-                operating, or exit costs are set out in the opportunity documents before you invest.
+                Structuring, administration, operating, and exit costs vary from place to place.
+                The amount, who pays it, when it falls due, and what it means for your return are
+                set out in the opportunity documents before you invest.
               </p>
             </article>
           </div>
@@ -43,18 +45,18 @@ export default function FeesPage() {
             <h2 className="display-s">How to read the figures</h2>
             <p>{FEE_TERMINOLOGY_LINE}</p>
             <ul className="risk-list">
-              <li>Check whether each target is shown gross or net of listed opportunity fees.</li>
-              <li>Check who pays each cost and when it is charged.</li>
-              <li>Taxes and personal bank charges are separate from Parkwise fees.</li>
+              <li>Check whether each target is shown gross or net of the listed fees.</li>
+              <li>Check who pays each cost, and when it falls due.</li>
+              <li>Taxes and personal bank charges sit outside Parkwise fees entirely.</li>
             </ul>
             <p>{NO_PLATFORM_FEE_LINE}</p>
           </div>
           <div className="risk-panel section-foot">
-            <h2 className="display-s">Important</h2>
+            <h2 className="display-s">Before you invest: a short checklist</h2>
             <ul className="risk-list">
-              <li>Fee schedules can differ by opportunity.</li>
-              <li>Read the opportunity documents before investing.</li>
-              <li>{RISK_LINE}</li>
+              {FEES_CHECKLIST.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
             </ul>
             <div className="apply-actions stack-6">
               <Link className="btn btn-primary" href="/apply">
