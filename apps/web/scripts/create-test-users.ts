@@ -39,6 +39,8 @@ async function ensureUser(email: string, name: string, password: string) {
     id: randomUUID(),
     accountId: id,
     providerId: "credential",
+    // better-auth 1.7 keys accounts on (issuer, accountId)
+    issuer: "local:credential",
     userId: id,
     password: hashed,
     createdAt: new Date(),

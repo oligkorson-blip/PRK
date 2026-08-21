@@ -1,6 +1,6 @@
 {
-  "id": "827485b5-56c5-4a41-bf3e-784b1c390c0f",
-  "prevId": "d1e4e2f1-0a73-4d4d-a3de-4b0e8f4e9b31",
+  "id": "e4ab0246-4f6d-46bc-8794-1b9c3c3bb316",
+  "prevId": "827485b5-56c5-4a41-bf3e-784b1c390c0f",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -3347,6 +3347,12 @@
           "primaryKey": false,
           "notNull": true,
           "default": "now()"
+        },
+        "interest_id": {
+          "name": "interest_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {
@@ -3388,6 +3394,21 @@
             }
           ],
           "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "contracts_interest_id_uidx": {
+          "name": "contracts_interest_id_uidx",
+          "columns": [
+            {
+              "expression": "interest_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
           "concurrently": false,
           "method": "btree",
           "with": {}

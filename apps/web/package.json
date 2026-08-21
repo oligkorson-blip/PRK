@@ -24,7 +24,7 @@
     "test:integration": "vitest run --config vitest.integration.config.ts"
   },
   "dependencies": {
-    "better-auth": "^1.6.23",
+    "better-auth": "^1.7.1",
     "dotenv": "^17.4.2",
     "drizzle-orm": "^0.45.2",
     "next": "^15.1.0",

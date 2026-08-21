@@ -49,6 +49,7 @@ async function insertCredentialAccount(tx: WriteTx, userId: string): Promise<voi
     id: randomBytes(16).toString("hex"),
     accountId: userId,
     providerId: "credential",
+    issuer: "local:credential",
     userId,
     password: hashed,
     createdAt: now,

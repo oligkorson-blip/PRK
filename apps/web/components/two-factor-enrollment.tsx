@@ -196,7 +196,9 @@ export function TwoFactorEnrollment({ enabled, destination }: {
     const password = String(new FormData(event.currentTarget).get("password") ?? "");
     try {
       const result = await authClient.twoFactor.enable({ password, issuer: "Parkwise" });
-      if (result.error || !result.data) {
+      // 1.7 types enable() as a discriminated union — only the totp variant
+      // carries the URI and backup codes this flow needs.
+      if (result.error || !result.data || result.data.method !== "totp") {
         setError("Two-factor setup could not start. Check your password and try again.");
         return;
       }

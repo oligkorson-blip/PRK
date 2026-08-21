@@ -40,6 +40,10 @@ export const account = pgTable(
     id: text("id").primaryKey(),
     accountId: text("account_id").notNull(),
     providerId: text("provider_id").notNull(),
+    // better-auth 1.7 keys accounts on (issuer, accountId); credential
+    // accounts carry the synthetic issuer "local:credential". This deployment
+    // has no OAuth providers, so the default backfills existing rows safely.
+    issuer: text("issuer").notNull().default("local:credential"),
     userId: text("user_id")
       .notNull()
       .references(() => user.id, { onDelete: "cascade" }),
