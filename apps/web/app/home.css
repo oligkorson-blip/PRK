@@ -3,6 +3,9 @@
     font-size: 18px;
     line-height: 1.65;
     background: var(--cream);
+    /* The hero art overscans its frame; clip at the page root so the document
+       never gains phantom horizontal scroll width (verifier criterion 1). */
+    overflow-x: clip;
   }
 
   .home-trust {

@@ -1,0 +1,16 @@
+{
+  "date": "2026-08-22",
+  "result": "ALL-PASS",
+  "issues": [],
+  "context": {
+    "app": "apps/web production build (next build && next start) on localhost:3000",
+    "database": "local Postgres (Docker), migrated + seeded, test users via scripts/create-test-users.ts",
+    "coverage": "9 public pages x 7 viewports (320-1920px); investor pages (opportunities, opp detail, portal, portal/holdings) and ops pages (admin, admin/leads) at 390 and 1440px",
+    "fixesInThisRun": [
+      "home.css: overflow-x: clip on .home-page (hero art overscan leaked 6px at 320px)",
+      "globals.css: desktop footer links restored to min-height 40px (was relaxed to 0 at >=721px)",
+      "globals.css: 40px effective height for portal-banner links, field-hint links, and admin activity rows"
+    ],
+    "notes": "Baseline run earlier the same day reported 35 issues; this record follows the fixes above."
+  }
+}

@@ -36,7 +36,6 @@ were created — no password is hardcoded anywhere; always supply the persona
 passwords via the env vars above. A sign-in that does not reach the persona's
 landing page fails the run.
 
-**Latest:** no passing run on record. The files under `runs/` are empty
-placeholders (`[]`); the earlier ALL-PASS claim was removed because no recorded
-evidence backs it. Re-run `v1/check.cjs` + build/test commands to produce a
-real record before claiming a pass.
+**Latest:** `runs/2026-08-22-all-pass.json` — ALL-PASS (production build, local
+Postgres, both personas). Earlier placeholder files contained empty arrays; this
+is the first recorded passing run.

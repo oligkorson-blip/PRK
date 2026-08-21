@@ -641,7 +641,9 @@ body.nav-menu-open {
 }
 @media (min-width: 721px) {
   .site-footer .footer-col a {
-    min-height: 0;
+    /* Desktop may tighten spacing, but never below the 40px touch-target bar
+       the design verifier enforces at every viewport. */
+    min-height: 40px;
     padding-block: 2px;
   }
 }
@@ -3295,6 +3297,20 @@ details.faq-item[open] > .faq-a { display: block; }
 /* Feed lines link to the record they concern; keep them reading as text. */
 .admin-activity-list a { color: inherit; text-decoration: none; }
 .admin-activity-list a:hover { text-decoration: underline; }
+/* ...but still meet the 40px effective-height bar — the whole row is the target. */
+.admin-activity-list a {
+  display: block;
+  min-height: 40px;
+  align-content: center;
+}
+/* Inline links that act as real targets (banner CTAs, hint links) get the
+   same 40px effective height; mid-sentence rhythm is unaffected in practice. */
+.portal-banner a,
+.field-hint a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+}
 .admin-activity-item { border-left: 2px solid var(--line-soft, var(--line)); padding-left: var(--space-3); }
 .admin-activity-item p { margin: 0 0 4px; }
 
