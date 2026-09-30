@@ -8,6 +8,15 @@ import { PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH } from "@/lib/auth/password-po
 import { isAuthRateLimitEnabled } from "@/lib/auth/rate-limit-enabled";
 import { areSignupsDisabled, isBootstrapSignupEmailAllowed } from "@/lib/auth/signups";
 import { sendTransactionalEmail } from "@/lib/email/send";
+import {
+  isEmailVerificationRequired,
+  REQUIRE_EMAIL_VERIFICATION
+} from "@/lib/auth/email-verification";
+
+// Re-exported so existing readers (lib/auth/investor.ts) keep importing the
+// flag through this module while the definition lives in the dependency-free
+// lib/auth/email-verification.ts for hermetic guard tests.
+export { isEmailVerificationRequired };
 
 // A forwarded IP header is only resolved right-to-left past trusted proxy hops,
 // so a forged X-Forwarded-For prefix is ignored. The app sits behind
@@ -19,22 +28,9 @@ const trustedProxies = (process.env.TRUSTED_PROXIES ?? "127.0.0.1,::1")
   .map((entry) => entry.trim())
   .filter(Boolean);
 
-// Email verification is intentionally off while signup is limited to the
-// SUPER_ADMIN_EMAILS bootstrap. If signup ever opens beyond bootstrap (see
-// areSignupsDisabled in lib/auth/signups.ts), flip this to true and wire
-// sendVerificationEmail first so unverified addresses cannot sign in.
-// lib/auth/investor.ts reads this via isEmailVerificationRequired() to gate
-// the unclaimed-investor claim on a verified address.
-const REQUIRE_EMAIL_VERIFICATION = false;
-
-/**
- * Single source for "must an email address be verified before it can act?"
- * The investor claim path refuses to attach an unclaimed investor row (KYC
- * documents, interests, holdings) to an unverified account when this is on.
- */
-export function isEmailVerificationRequired(): boolean {
-  return REQUIRE_EMAIL_VERIFICATION;
-}
+// The verification flag moved to lib/auth/email-verification.ts (imported
+// above) so the guard test can read it without loading the auth stack. Flip
+// it there if signup ever opens beyond bootstrap.
 
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
